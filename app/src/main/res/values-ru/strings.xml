@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--        SignInActivity-->
+    <string name="signInInvitation">Авторизуйтесь, чтобы продолжить</string>
+    <string name="signInAnonymously">Войти анонимно</string>
+    <string name="signInWithGoogle">Войти через Google</string>
+    <!--                      -->
+</resources>

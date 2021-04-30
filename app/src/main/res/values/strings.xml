@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Wearer</string>
+    <string name="app_name" translatable="false">Wearer</string>
+
+    <!--        SignInActivity-->
+    <string name="signInInvitation">Authenticate to continue</string>
+    <string name="signInAnonymously">Sign in anonymously</string>
+    <string name="signInWithGoogle">Sign in with Google</string>
+    <!--                      -->
+
 </resources>
