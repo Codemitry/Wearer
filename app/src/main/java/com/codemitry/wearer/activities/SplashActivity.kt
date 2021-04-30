@@ -39,7 +39,7 @@ class SplashActivity : AppCompatActivity(), SplashContract.SplashView {
     }
 
     override fun showWearerActivity() {
-        // TODO: Add wearer activity
+        WearerActivity.start(this)
     }
 
 }

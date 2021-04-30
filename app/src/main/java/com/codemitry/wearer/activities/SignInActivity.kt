@@ -31,7 +31,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.SignInView {
     }
 
     override fun showMainActivity() {
-        Toast.makeText(this, "Success auth", Toast.LENGTH_LONG).show()
+        WearerActivity.start(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,7 +84,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.SignInView {
                 presenter.onGoogleSignInSuccessful(accountIdToken)
 
             } catch (e: Exception) {
-                Log.d("Google sign in", "signInWithCredential:failure")
+                Log.d("Google sign in", "signInWithCredential:failure", e)
                 presenter.onGoogleSignInFailure()
             }
         }
