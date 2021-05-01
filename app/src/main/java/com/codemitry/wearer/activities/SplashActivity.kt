@@ -39,7 +39,7 @@ class SplashActivity : AppCompatActivity(), SplashContract.SplashView {
     }
 
     override fun showWearerActivity() {
-        WearerActivity.start(this)
+        ClothesTypesByWearingWayActivity.start(this)
     }
 
 }

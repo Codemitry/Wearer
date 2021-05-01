@@ -1,10 +1,20 @@
 <resources>
     <string name="app_name" translatable="false">Wearer</string>
 
-    <!--        SignInActivity-->
+    <!--        SignInActivity      -->
     <string name="signInInvitation">Authenticate to continue</string>
     <string name="signInAnonymously">Sign in anonymously</string>
     <string name="signInWithGoogle">Sign in with Google</string>
-    <!--                      -->
+    <!--                            -->
+
+    <!--       ClothesTypesByWearingWayActivity       -->
+    <string name="outerwear">Outerwear</string>
+    <string name="lightClothes">Light clothes</string>
+    <string name="underwear">Underwear</string>
+    <string name="shoes">Shoes</string>
+    <string name="accessories">Accessories</string>
+    <!--                                              -->
+
+    <string name="myClothes">My clothes</string>
 
 </resources>

@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wearer">
-        <activity android:name=".activities.WearerActivity"></activity>
+        <activity android:name=".activities.ClothesTypesByWearingWayActivity"></activity>
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"

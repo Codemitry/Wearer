@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--        SignInActivity-->
+    <!--        SignInActivity      -->
     <string name="signInInvitation">Авторизуйтесь, чтобы продолжить</string>
     <string name="signInAnonymously">Войти анонимно</string>
     <string name="signInWithGoogle">Войти через Google</string>
-    <!--                      -->
+    <!--                            -->
+
+    <!--       ClothesTypesByWearingWayActivity       -->
+    <string name="outerwear">Верхняя одежда</string>
+    <string name="lightClothes">Легкая одежда</string>
+    <string name="underwear">Нижнее белье</string>
+    <string name="shoes">Обувь</string>
+    <string name="accessories">Аксессуары</string>
+    <!--                                              -->
+
+    <string name="myClothes">Моя одежда</string>
 </resources>

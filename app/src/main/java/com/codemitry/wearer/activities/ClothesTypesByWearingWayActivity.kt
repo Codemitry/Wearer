@@ -7,15 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.codemitry.wearer.R
 
-class WearerActivity : AppCompatActivity() {
+class ClothesTypesByWearingWayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_wearer)
+        setContentView(R.layout.activity_clothes_types_by_wearing_way)
     }
 
     companion object {
         fun start(context: Context) {
-            val intent = Intent(context, WearerActivity::class.java)
+            val intent = Intent(context, ClothesTypesByWearingWayActivity::class.java)
             ContextCompat.startActivity(context, intent, null)
         }
     }
