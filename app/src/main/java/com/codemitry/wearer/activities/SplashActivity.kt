@@ -36,10 +36,12 @@ class SplashActivity : AppCompatActivity(), SplashContract.SplashView {
 
     override fun showSignInActivity() {
         SignInActivity.start(this)
+        finish()
     }
 
     override fun showWearerActivity() {
         ClothesTypesByWearingWayActivity.start(this)
+        finish()
     }
 
 }

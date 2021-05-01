@@ -32,6 +32,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.SignInView {
 
     override fun showMainActivity() {
         ClothesTypesByWearingWayActivity.start(this)
+        finish()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
