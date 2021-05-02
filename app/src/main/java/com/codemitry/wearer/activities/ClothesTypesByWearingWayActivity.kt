@@ -20,15 +20,37 @@ class ClothesTypesByWearingWayActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val clickListener = { view: View ->
-            val clothesType: ClothesTypesByWearingWay = when (view.id) {
-                R.id.outerwear -> ClothesTypesByWearingWay.OUTERWEAR
-                R.id.lightClothes -> ClothesTypesByWearingWay.LIGHT_CLOTHES
-                R.id.underwear -> ClothesTypesByWearingWay.UNDERWEAR
-                R.id.shoes -> ClothesTypesByWearingWay.SHOES
-                R.id.accessories -> ClothesTypesByWearingWay.ACCESSORIES
+            val transitionView: View
+            val clothesType: ClothesTypesByWearingWay
+            when (view.id) {
+                R.id.outerwear -> {
+                    binding.outerwear.transitionName = ClothesSubtypesActivity.SHARED_IMAGE_NAME
+                    transitionView = binding.outerwear
+                    clothesType = ClothesTypesByWearingWay.OUTERWEAR  // return value
+                }
+                R.id.lightClothes -> {
+                    binding.lightClothes.transitionName = ClothesSubtypesActivity.SHARED_IMAGE_NAME
+                    transitionView = binding.lightClothes
+                    clothesType = ClothesTypesByWearingWay.LIGHT_CLOTHES  // return value
+                }
+                R.id.underwear -> {
+                    binding.underwear.transitionName = ClothesSubtypesActivity.SHARED_IMAGE_NAME
+                    transitionView = binding.underwear
+                    clothesType = ClothesTypesByWearingWay.UNDERWEAR  // return value
+                }
+                R.id.shoes -> {
+                    binding.shoes.transitionName = ClothesSubtypesActivity.SHARED_IMAGE_NAME
+                    transitionView = binding.shoes
+                    clothesType = ClothesTypesByWearingWay.SHOES  // return value
+                }
+                R.id.accessories -> {
+                    binding.accessories.transitionName = ClothesSubtypesActivity.SHARED_IMAGE_NAME
+                    transitionView = binding.accessories
+                    clothesType = ClothesTypesByWearingWay.ACCESSORIES  // return value
+                }
                 else -> error("Unexpected clothes type")
             }
-            ClothesSubtypesActivity.start(this, clothesType)
+            ClothesSubtypesActivity.start(this, clothesType, transitionView)
         }
 
         binding.outerwear.setOnClickListener(clickListener)

@@ -15,6 +15,9 @@
 
         <item name="actionMenuTextColor">@color/blue.bright</item>
         <item name="fontFamily">sans-serif-condensed-medium</item>
+
+        <!--        enable shared transition-->
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="Theme.Wearer.Launcher">
