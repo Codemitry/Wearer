@@ -12,4 +12,8 @@
     <color name="pink">#facedf</color>
     <color name="blue">#8dbbf2</color>
     <color name="blue.bright">#2577DA</color>
+
+
+    <color name="translucent_scrim_bottom">#51000000</color>
+    <color name="translucent_scrim_bottom_center">#25000000</color>
 </resources>

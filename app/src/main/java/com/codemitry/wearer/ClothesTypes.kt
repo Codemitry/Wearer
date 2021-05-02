@@ -1,6 +1,6 @@
 package com.codemitry.wearer
 
-enum class ClothesTypesByWearingType {
+enum class ClothesTypesByWearingWay {
     OUTERWEAR, LIGHT_CLOTHES, UNDERWEAR, SHOES, ACCESSORIES
 }
 
