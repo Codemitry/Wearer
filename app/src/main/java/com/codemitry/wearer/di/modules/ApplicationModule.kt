@@ -36,4 +36,10 @@ class ApplicationModule {
         return SignInChecker()
     }
 
+//    @Provides
+//    fun provideClothesSubtypesPresenter(): ClothesSubtypesContract.Presenter {
+//        return ClothesSubtypesPresenter()
+//    }
+
+
 }

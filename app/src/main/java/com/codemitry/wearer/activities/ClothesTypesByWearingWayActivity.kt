@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.codemitry.wearer.ClothesTypesByWearingWay
+import com.codemitry.wearer.App
 import com.codemitry.wearer.R
 import com.codemitry.wearer.databinding.ActivityClothesTypesByWearingWayBinding
+import com.codemitry.wearer.models.ClothesTypesByWearingWay
 
 class ClothesTypesByWearingWayActivity : AppCompatActivity() {
 
@@ -50,6 +51,7 @@ class ClothesTypesByWearingWayActivity : AppCompatActivity() {
                 }
                 else -> error("Unexpected clothes type")
             }
+            (application as App).setClothesType(clothesType)
             ClothesSubtypesActivity.start(this, clothesType, transitionView)
         }
 

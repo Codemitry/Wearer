@@ -16,4 +16,43 @@
     <!--                                              -->
 
     <string name="myClothes">Моя одежда</string>
+
+    <!--    Clothes Subtypes-->
+    <string name="overcoat">Пальто</string>
+    <string name="cloak">Плащ</string>
+    <string name="jacket">Куртка</string>
+    <string name="poncho">Пончо</string>
+    <string name="windcheater">Ветровка</string>
+
+    <string name="hoodie">Худи</string>
+    <string name="jumper">Джемпер</string>
+    <string name="sweater">Свитер</string>
+    <string name="shirt">Рубашка</string>
+    <string name="tShirt">Футболка</string>
+    <string name="polo">Поло</string>
+    <string name="top">Топ</string>
+    <string name="vest">Жилет</string>
+    <string name="dress">Платье</string>
+
+    <string name="trousers">Брюки</string>
+    <string name="jeans">Джинсы</string>
+    <string name="knickerbockers">Бриджи</string>
+    <string name="skirt">Юбка</string>
+    <string name="shorts">Шорты</string>
+
+    <string name="briefs">Брифы</string>
+    <string name="boxers">Боксеры</string>
+    <string name="nightie">Ночнушка</string>
+    <string name="socks">Носки</string>
+
+    <string name="snickers">Кроссовки</string>
+    <string name="gumshoes">Кеды</string>
+    <string name="boot">Ботинки</string>
+    <string name="highHeels">Высокие каблуки</string>
+
+    <string name="scarf">Шарф</string>
+    <string name="bag">Сумка</string>
+    <string name="umbrella">Зонт</string>
+
+
 </resources>

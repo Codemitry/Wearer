@@ -7,21 +7,31 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
-import com.codemitry.wearer.ClothesTypesByWearingWay
+import com.codemitry.wearer.App
 import com.codemitry.wearer.R
 import com.codemitry.wearer.databinding.ActivityClothesSubtypesBinding
+import com.codemitry.wearer.fragments.ClothesSubtypesBottomFragment
+import com.codemitry.wearer.models.ClothesSubtype
+import com.codemitry.wearer.models.ClothesTypesByWearingWay
+import com.codemitry.wearer.mvp.contracts.clothessubtypes.ClothesSubtypesContract
+import javax.inject.Inject
 
-class ClothesSubtypesActivity : AppCompatActivity() {
+class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.View {
 
     private lateinit var binding: ActivityClothesSubtypesBinding
     private lateinit var clothesTypeByWearingWay: ClothesTypesByWearingWay
 
+    @Inject
+    lateinit var presenter: ClothesSubtypesContract.Presenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (application as App).clothesTypeComponent.inject(this)
         binding = ActivityClothesSubtypesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        clothesTypeByWearingWay = intent.getSerializableExtra(ClothesTypesByWearingWay::class.simpleName) as ClothesTypesByWearingWay
+        clothesTypeByWearingWay =
+            intent.getSerializableExtra(ClothesTypesByWearingWay::class.simpleName) as ClothesTypesByWearingWay
         when (clothesTypeByWearingWay) {
             ClothesTypesByWearingWay.OUTERWEAR -> {
                 binding.toolbar.title = getString(R.string.outerwear)
@@ -45,6 +55,20 @@ class ClothesSubtypesActivity : AppCompatActivity() {
                 binding.headerImage.setImageResource(R.drawable.accessories)
             }
         }
+
+        binding.addClothesSubtype.setOnClickListener { presenter.onClothesTypesAddClicked() }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        presenter.onViewAttached(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        presenter.onViewDetached()
     }
 
     companion object {
@@ -53,9 +77,21 @@ class ClothesSubtypesActivity : AppCompatActivity() {
             val intent = Intent(from, ClothesSubtypesActivity::class.java)
             intent.putExtra(ClothesTypesByWearingWay::class.simpleName, clothesType)
 
-            val options: ActivityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(from, transitionView, SHARED_IMAGE_NAME)
+            val options: ActivityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                from,
+                transitionView,
+                SHARED_IMAGE_NAME
+            )
 
             ContextCompat.startActivity(from, intent, options.toBundle())
         }
     }
+
+
+    override fun showClothesTypes(clothes: List<ClothesSubtype>) {
+        val bottomFragment = ClothesSubtypesBottomFragment(presenter)
+        bottomFragment.show(supportFragmentManager, ClothesSubtypesBottomFragment::class.simpleName)
+        bottomFragment.showClothesTypes(clothes)
+    }
+
 }

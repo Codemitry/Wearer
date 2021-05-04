@@ -17,4 +17,41 @@
 
     <string name="myClothes">My clothes</string>
 
+    <!--    Clothes Subtypes-->
+    <string name="overcoat">Overcoat</string>
+    <string name="cloak">Cloak</string>
+    <string name="jacket">Jacket</string>
+    <string name="poncho">Poncho</string>
+    <string name="windcheater">Windcheater</string>
+
+    <string name="hoodie">Hoodie</string>
+    <string name="jumper">Jumper</string>
+    <string name="sweater">Sweater</string>
+    <string name="shirt">Shirt</string>
+    <string name="tShirt">T-shirt</string>
+    <string name="polo">Polo</string>
+    <string name="top">Top</string>
+    <string name="vest">Vest</string>
+    <string name="dress">Dress</string>
+
+    <string name="trousers">Trousers</string>
+    <string name="jeans">Jeans</string>
+    <string name="knickerbockers">Knickerbockers</string>
+    <string name="skirt">Skirt</string>
+    <string name="shorts">Shorts</string>
+
+    <string name="briefs">Briefs</string>
+    <string name="boxers">Boxers</string>
+    <string name="nightie">Nightie</string>
+    <string name="socks">Socks</string>
+
+    <string name="snickers">Snickers</string>
+    <string name="gumshoes">Gumshoes</string>
+    <string name="boot">Boot</string>
+    <string name="highHeels">High-heels</string>
+
+    <string name="scarf">Scarf</string>
+    <string name="bag">Bag</string>
+    <string name="umbrella">Umbrella</string>
+
 </resources>

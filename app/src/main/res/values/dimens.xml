@@ -3,4 +3,8 @@
     <dimen name="buttonCorner">10dp</dimen>
     <dimen name="appBarHeight">200dp</dimen>
     <dimen name="sheet_text_scrim_height_bottom">150dp</dimen>
+
+    <dimen name="clothesSubtypeHeight">60dp</dimen>
+    <dimen name="clothesSubtypeItemCorner">5dp</dimen>
+    <dimen name="clothesSubtypeBottomFragmentCorner">16dp</dimen>
 </resources>

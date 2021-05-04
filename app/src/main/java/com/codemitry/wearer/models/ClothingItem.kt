@@ -5,7 +5,7 @@ import java.time.Year
 
 data class ClothingItem(
     val name: String,
-    val types: Set<ClothingItemTypes>? = null,
+//    val types: Set<ClothingItemTypes>? = null,
     val brand: String? = null,
     val colors: Set<String>? = null,
     val size: String? = null,
@@ -15,10 +15,6 @@ data class ClothingItem(
     val photo: URI
 )
 
-
-enum class ClothingItemTypes {
-    OUTERWEAR
-}
 
 enum class CaringLabels {
 
