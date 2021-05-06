@@ -55,4 +55,10 @@
     <string name="umbrella">Зонт</string>
 
 
+    <string name="delete">Удалить</string>
+
+    <string name="itemWillBeRemoved">Элемент %1$s будет удален</string>
+    <string name="undo">Отменить</string>
+
+
 </resources>

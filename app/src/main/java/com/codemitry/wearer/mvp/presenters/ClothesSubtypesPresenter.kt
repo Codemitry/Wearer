@@ -8,6 +8,14 @@ class ClothesSubtypesPresenter(val clothesType: ClothesTypesByWearingWay) :
 
     override var view: ClothesSubtypesContract.View? = null
 
+    private var userClothesTypes = mutableListOf<ClothesSubtype>()
+
+    override fun onViewAttached(view: ClothesSubtypesContract.View) {
+        super.onViewAttached(view)
+
+        view.showClothesTypes(userClothesTypes)
+    }
+
     override fun onClothesTypesAddClicked() {
         val clothes = mutableListOf<ClothesSubtype>()
 
@@ -28,10 +36,34 @@ class ClothesSubtypesPresenter(val clothesType: ClothesTypesByWearingWay) :
                 clothes.addAll(AccessoriesTypes.values())
             }
         }
-        view?.showClothesTypes(clothes)
+        // remove duplicates in possible clothes subtypes
+        clothes.removeAll(userClothesTypes)
+        view?.showPossibleClothesTypes(clothes)
+    }
+
+    override fun onAskDeleteClothesItem(position: Int) {
+        val deletedItem = userClothesTypes[position]
+        userClothesTypes.removeAt(position)
+        view?.askItemDeletingConfirmation(deletedItem, position)
+    }
+
+    override fun onItemDeletingPositiveAnswer(item: ClothesSubtype, position: Int) {
+        // TODO: remove clothes subtype from DB
+    }
+
+    override fun onItemDeletingNegativeAnswer(item: ClothesSubtype, position: Int) {
+        userClothesTypes.add(position, item)
+        view?.addClothesType(item, position)
+
+    }
+
+    override fun onClothesTypeOpenClick(item: ClothesSubtype) {
+        // TODO: go to next activity
     }
 
 
-    override fun onClothesTypeClick(clothesType: ClothesSubtype) {
+    override fun onAddClothesTypeClick(clothesType: ClothesSubtype) {
+        userClothesTypes.add(clothesType)
+        view?.addClothesType(clothesType, userClothesTypes.lastIndex)
     }
 }

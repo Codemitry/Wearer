@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.codemitry.wearer.clothessubtypes.ClothesSubtypeItemAdapter
 import com.codemitry.wearer.databinding.FragmentClothesSubtypesBinding
 import com.codemitry.wearer.models.ClothesSubtype
-import com.codemitry.wearer.models.ClothesSubtypeItemAdapter
 import com.codemitry.wearer.mvp.contracts.clothessubtypes.ClothesSubtypesContract
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 

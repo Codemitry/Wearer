@@ -54,4 +54,10 @@
     <string name="bag">Bag</string>
     <string name="umbrella">Umbrella</string>
 
+
+    <string name="delete">Delete</string>
+
+    <string name="itemWillBeRemoved">Item %1$s will be removed</string>
+    <string name="undo">Undo</string>
+
 </resources>

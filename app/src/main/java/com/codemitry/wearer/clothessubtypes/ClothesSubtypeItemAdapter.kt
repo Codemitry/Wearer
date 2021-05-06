@@ -1,4 +1,4 @@
-package com.codemitry.wearer.models
+package com.codemitry.wearer.clothessubtypes
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.codemitry.wearer.R
+import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.mvp.contracts.clothessubtypes.ClothesSubtypesContract
 
 class ClothesSubtypeItemAdapter(
     private val clothesTypes: List<ClothesSubtype>,
-    private val onClothesTypeAddClickListener: ClothesSubtypesContract.OnClothesTypeAddClickListener
+    private val onItemClickListener: ClothesSubtypesContract.OnClothesTypeAddClickListener
 ) : RecyclerView.Adapter<ClothesSubtypeItemAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -35,7 +36,7 @@ class ClothesSubtypeItemAdapter(
         holder.icon?.setImageResource(clothesTypes[position].iconResource)
 
         holder.itemView.setOnClickListener { view ->
-            onClothesTypeAddClickListener.onClothesTypeClick(clothesTypes[position])
+            onItemClickListener.onAddClothesTypeClick(clothesTypes[position])
         }
     }
 
