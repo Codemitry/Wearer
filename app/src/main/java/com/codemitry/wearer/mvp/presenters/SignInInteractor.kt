@@ -1,6 +1,7 @@
 package com.codemitry.wearer.mvp.presenters
 
 import android.util.Log
+import com.codemitry.wearer.db.DBManager
 import com.codemitry.wearer.mvp.contracts.signin.SignInContract
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
@@ -14,9 +15,10 @@ class SignInInteractor @Inject constructor() : SignInContract.SignInInteractor {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         FirebaseAuth.getInstance().signInWithCredential(credential)
             .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
+                if (task.isSuccessful && task.result?.user?.uid != null) {
                     // Sign in success
                     Log.d("Sign in", "signInWithCredential:success")
+                    DBManager.uid = task.result?.user?.uid ?: ""
                     onSignInListener?.onSuccess()
                 } else {
                     // Sign in fails
@@ -29,9 +31,10 @@ class SignInInteractor @Inject constructor() : SignInContract.SignInInteractor {
     override fun performFirebaseThroughAnonymousSignIn() {
         FirebaseAuth.getInstance().signInAnonymously()
             .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
+                if (task.isSuccessful && task.result?.user?.uid != null) {
                     // Sign in success
                     Log.d("Sign in", "signInAnonymously:success")
+                    DBManager.uid = task.result?.user?.uid ?: ""
                     onSignInListener?.onSuccess()
                 } else {
                     // Sign in fails

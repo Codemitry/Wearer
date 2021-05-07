@@ -140,8 +140,13 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
                     }
                 }
             })
-            .show()
+                .show()
 
+    }
+
+    override fun showMyClothesActivity(clothesType: ClothesSubtype) {
+        (application as App).setClothesSubtype(clothesType)
+        MyClothesActivity.start(this)
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int, position: Int) {

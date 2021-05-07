@@ -8,4 +8,8 @@ class SignInChecker : SplashContract.SignInChecker {
     override fun signedIn(): Boolean {
         return Firebase.auth.currentUser != null
     }
+
+    override fun userId(): String? {
+        return Firebase.auth.uid
+    }
 }

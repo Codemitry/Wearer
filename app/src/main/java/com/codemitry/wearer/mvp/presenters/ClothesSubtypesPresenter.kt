@@ -1,10 +1,14 @@
 package com.codemitry.wearer.mvp.presenters
 
+import com.codemitry.wearer.db.ActionCompleteListener
 import com.codemitry.wearer.models.*
 import com.codemitry.wearer.mvp.contracts.clothessubtypes.ClothesSubtypesContract
+import javax.inject.Inject
 
-class ClothesSubtypesPresenter(val clothesType: ClothesTypesByWearingWay) :
-    ClothesSubtypesContract.Presenter {
+class ClothesSubtypesPresenter @Inject constructor(
+    override var clothesType: ClothesTypesByWearingWay,
+    var clothesTypeDeleter: ClothesSubtypesContract.ClothesTypeDeleter
+) : ClothesSubtypesContract.Presenter {
 
     override var view: ClothesSubtypesContract.View? = null
 
@@ -48,7 +52,10 @@ class ClothesSubtypesPresenter(val clothesType: ClothesTypesByWearingWay) :
     }
 
     override fun onItemDeletingPositiveAnswer(item: ClothesSubtype, position: Int) {
-        // TODO: remove clothes subtype from DB
+        clothesTypeDeleter.clothesSubtypeDelete(
+            clothesType,
+            item,
+            object : ActionCompleteListener {})
     }
 
     override fun onItemDeletingNegativeAnswer(item: ClothesSubtype, position: Int) {
@@ -58,7 +65,7 @@ class ClothesSubtypesPresenter(val clothesType: ClothesTypesByWearingWay) :
     }
 
     override fun onClothesTypeOpenClick(item: ClothesSubtype) {
-        // TODO: go to next activity
+        view?.showMyClothesActivity(item)
     }
 
 
