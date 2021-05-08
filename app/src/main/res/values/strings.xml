@@ -101,6 +101,7 @@
     <string name="pick_year">Pick a year</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
+    <string name="purchaseYear">Purchase year</string>
 
     <!--    -->
 </resources>
