@@ -60,4 +60,47 @@
     <string name="itemWillBeRemoved">Item %1$s will be removed</string>
     <string name="undo">Undo</string>
 
+
+    <string name="bleaching">Bleaching</string>
+    <string name="bleaching_no">No bleaching</string>
+    <string name="bleaching_non_chlorine">Non-chlorine bleaching</string>
+    <string name="machine_washing">Machine washing</string>
+    <string name="hand_washing">Hand washing</string>
+    <string name="washing_no">Washing no</string>
+    <string name="hand_washing_cold">Cold hand washing</string>
+    <string name="hand_washing_warm">Warm hand washing</string>
+    <string name="washing_30deg">Washing at 30 °C</string>
+    <string name="washing_40deg">Washing at 40 °C</string>
+    <string name="washing_50deg">Washing at 50 °C</string>
+    <string name="washing_60deg">Washing at 60 °C</string>
+    <string name="washing_70deg">Washing at 70 °C</string>
+    <string name="washing_95deg">Washing at 95 °C</string>
+
+    <string name="washing_30deg_permanent_press">Washing at 30 °C permanent press</string>
+    <string name="washing_40deg_permanent_press">Washing at 40 °C permanent press</string>
+    <string name="washing_50deg_permanent_press">Washing at 50 °C permanent press</string>
+    <string name="washing_60deg_permanent_press">Washing at 60 °C permanent press</string>
+    <string name="washing_95deg_permanent_press">Washing at 95 °C permanent press</string>
+
+    <string name="washing_30deg_extra_care">Washing at 30 °C extra care</string>
+    <string name="washing_40deg_extra_care">Washing at 40 °C extra care</string>
+    <string name="ironing">Ironing</string>
+    <string name="ironing_no">No ironing</string>
+    <string name="ironing_steam_no">No ironing steam</string>
+    <string name="ironing_cool">Ironing cool</string>
+    <string name="ironing_warm">Ironing warm</string>
+    <string name="ironing_hot">Ironing hot</string>
+
+    <!--    AddClothingItemFragment-->
+    <string name="name">Name</string>
+    <string name="brand">Brand</string>
+    <string name="size">Size</string>
+    <string name="addClothingItem">Add clothing item</string>
+    <string name="addClothingItemButton">Add</string>
+    <string name="cancelAddinglothingItemButton">Cancel</string>
+    <string name="pick_year">Pick a year</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+
+    <!--    -->
 </resources>

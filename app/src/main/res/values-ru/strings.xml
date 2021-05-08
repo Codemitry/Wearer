@@ -59,6 +59,49 @@
 
     <string name="itemWillBeRemoved">Элемент %1$s будет удален</string>
     <string name="undo">Отменить</string>
+    <string name="bleaching">Отбеливание</string>
+    <string name="bleaching_no">Без отбелиавания</string>
+    <string name="bleaching_non_chlorine">Отбеливание без хлора</string>
+    <string name="machine_washing">Машинная стирка</string>
+    <string name="hand_washing">Ручная стирка</string>
+    <string name="washing_no">Без стирки</string>
+    <string name="hand_washing_cold">Холодная ручная стирка</string>
+    <string name="hand_washing_warm">Теплая ручная стирка</string>
+    <string name="washing_30deg">Стирка при 30 °C</string>
+    <string name="washing_40deg">Стирка при 40 °C</string>
+    <string name="washing_50deg">Стирка при 50 °C</string>
+    <string name="washing_60deg">Стирка при 60 °C</string>
+    <string name="washing_70deg">Стирка при 70 °C</string>
+    <string name="washing_95deg">Стирка при 95 °C</string>
+
+    <string name="washing_30deg_permanent_press">Стирка при 30 °C деликатная</string>
+    <string name="washing_40deg_permanent_press">Стирка при 40 °C деликатная</string>
+    <string name="washing_50deg_permanent_press">Стирка при 50 °C деликатная</string>
+    <string name="washing_60deg_permanent_press">Стирка при 60 °C деликатная</string>
+    <string name="washing_95deg_permanent_press">Стирка при 95 °C деликатная</string>
+
+    <string name="washing_30deg_extra_care">Стирка при 30 °C особо деликатная</string>
+    <string name="washing_40deg_extra_care">Стирка при 40 °C особо деликатная</string>
+    <string name="ironing">Глажка</string>
+    <string name="ironing_no">Без глажки</string>
+    <string name="ironing_steam_no">Глажка без пара</string>
+    <string name="ironing_cool">Холодная глажка</string>
+    <string name="ironing_warm">Теплая глажка</string>
+    <string name="ironing_hot">Горячая глажка</string>
+
+    <!--    AddClothingItemFragment-->
+    <string name="name">Имя</string>
+    <string name="brand">Бренд</string>
+    <string name="size">Размер</string>
+    <string name="addClothingItem">Добавить элемент одежды</string>
+    <string name="addClothingItemButton">Добавить</string>
+    <string name="cancelAddinglothingItemButton">Отменить</string>
+
+    <string name="pick_year">Выберите год</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="cancel">Отменить</string>
+
+    <!--    -->
 
 
 </resources>

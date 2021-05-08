@@ -44,6 +44,20 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="Button.Confirm">
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:backgroundTint">@color/blue</item>
+    </style>
+
+    <style name="Button.Cancel">
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:backgroundTint">@color/light</item>
+    </style>
+
     <style name="TextButton" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="iconGravity">start</item>
         <item name="iconTint">@null</item>
@@ -68,6 +82,12 @@
         <item name="android:shadowColor">@color/black</item>
         <item name="android:shadowRadius">14.0</item>
         <item name="android:elevation">5dp</item>
+    </style>
+
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/gray</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
     </style>
 
 
