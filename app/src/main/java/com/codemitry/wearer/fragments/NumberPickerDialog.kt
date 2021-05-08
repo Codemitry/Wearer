@@ -22,7 +22,6 @@ class NumberPickerDialog(val min: Int, val max: Int, val onYearPicked: (year: In
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = FragmentNumberPickerBinding.inflate(LayoutInflater.from(context))
-        println("build dialog")
         val dialog = activity?.let {
             val builder = AlertDialog.Builder(it)
             builder.setView(binding.root)
