@@ -12,19 +12,13 @@ class ClothesTypeModule(val clothesType: ClothesTypesByWearingWay) {
 
     @Provides
     fun provideClothesSubtypesPresenter(
-            clothesSubtypeDeleter: ClothesSubtypesContract.ClothesTypeDeleter,
-            clothesSubtypesLoader: ClothesSubtypesContract.ClothesTypesLoader
+            clothesSubtypeManager: ClothesSubtypesContract.ClothesTypesManager,
     ): ClothesSubtypesContract.Presenter {
-        return ClothesSubtypesPresenter(clothesType, clothesSubtypeDeleter, clothesSubtypesLoader)
+        return ClothesSubtypesPresenter(clothesType, clothesSubtypeManager)
     }
 
     @Provides
-    fun provideClothesSubtypeDeleter(): ClothesSubtypesContract.ClothesTypeDeleter {
-        return DBManager
-    }
-
-    @Provides
-    fun provideClothesSubtypeLoader(): ClothesSubtypesContract.ClothesTypesLoader {
+    fun provideClothesSubtypeManager(): ClothesSubtypesContract.ClothesTypesManager {
         return DBManager
     }
 }

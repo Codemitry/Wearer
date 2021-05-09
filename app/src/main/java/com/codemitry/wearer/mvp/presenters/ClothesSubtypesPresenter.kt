@@ -7,8 +7,7 @@ import javax.inject.Inject
 
 class ClothesSubtypesPresenter @Inject constructor(
         override var clothesType: ClothesTypesByWearingWay,
-        var clothesTypeDeleter: ClothesSubtypesContract.ClothesTypeDeleter,
-        var clothesSubtypesLoader: ClothesSubtypesContract.ClothesTypesLoader
+        var clothesTypesManager: ClothesSubtypesContract.ClothesTypesManager,
 ) : ClothesSubtypesContract.Presenter {
 
     override var view: ClothesSubtypesContract.View? = null
@@ -16,22 +15,18 @@ class ClothesSubtypesPresenter @Inject constructor(
     private var userClothesTypes = mutableListOf<ClothesSubtype>()
 
     init {
-        clothesSubtypesLoader.loadClothesSubtypes(clothesType, object : ActionCompleteListener {
+        clothesTypesManager.loadClothesSubtypes(clothesType, object : ActionCompleteListener {
             override fun onClothesSubtypesLoaded(clothesSubtypes: List<ClothesSubtype>) {
                 userClothesTypes.clear()
                 userClothesTypes.addAll(clothesSubtypes)
+
+                view?.showClothesTypes(userClothesTypes)
             }
 
             override fun onFailure() {
                 // TODO: on failure view
             }
         })
-    }
-
-    override fun onViewAttached(view: ClothesSubtypesContract.View) {
-        super.onViewAttached(view)
-
-        view.showClothesTypes(userClothesTypes)
     }
 
     override fun onClothesTypesAddClicked() {
@@ -66,10 +61,14 @@ class ClothesSubtypesPresenter @Inject constructor(
     }
 
     override fun onItemDeletingPositiveAnswer(item: ClothesSubtype, position: Int) {
-        clothesTypeDeleter.clothesSubtypeDelete(
-            clothesType,
-            item,
-            object : ActionCompleteListener {})
+        clothesTypesManager.deleteClothesSubtype(
+                clothesType,
+                item,
+                object : ActionCompleteListener {
+                    override fun onSuccess() {
+                        userClothesTypes.remove(item)
+                    }
+                })
     }
 
     override fun onItemDeletingNegativeAnswer(item: ClothesSubtype, position: Int) {
@@ -84,7 +83,11 @@ class ClothesSubtypesPresenter @Inject constructor(
 
 
     override fun onAddClothesTypeClick(clothesType: ClothesSubtype) {
-        userClothesTypes.add(clothesType)
-        view?.addClothesType(clothesType, userClothesTypes.lastIndex)
+        clothesTypesManager.addClothesSubtype(this.clothesType, clothesType, object : ActionCompleteListener {
+            override fun onSuccess() {
+                userClothesTypes.add(clothesType)
+                view?.addClothesType(clothesType, userClothesTypes.lastIndex)
+            }
+        })
     }
 }

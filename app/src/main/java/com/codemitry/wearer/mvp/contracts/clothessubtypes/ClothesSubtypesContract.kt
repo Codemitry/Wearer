@@ -25,19 +25,23 @@ abstract class ClothesSubtypesContract {
         fun onClothesTypeOpenClick(item: ClothesSubtype)
     }
 
-    interface ClothesTypeDeleter {
-        fun clothesSubtypeDelete(
-                clothesTypeByWearingWay: ClothesTypesByWearingWay,
-                clothesType: ClothesSubtype,
-                actionCompleteListener: ActionCompleteListener
-        )
-    }
-
     fun interface OnClothesTypeAddClickListener {
         fun onAddClothesTypeClick(clothesType: ClothesSubtype)
     }
 
-    interface ClothesTypesLoader {
+    interface ClothesTypesManager {
         fun loadClothesSubtypes(clothesTypeByWearingWay: ClothesTypesByWearingWay, completeListener: ActionCompleteListener)
+
+        fun deleteClothesSubtype(
+                clothesTypeByWearingWay: ClothesTypesByWearingWay,
+                clothesType: ClothesSubtype,
+                actionCompleteListener: ActionCompleteListener
+        )
+
+        fun addClothesSubtype(
+                clothesTypeByWearingWay: ClothesTypesByWearingWay,
+                clothesType: ClothesSubtype,
+                actionCompleteListener: ActionCompleteListener
+        )
     }
 }

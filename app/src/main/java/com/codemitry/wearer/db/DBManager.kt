@@ -10,7 +10,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
-object DBManager : ClothesSubtypesContract.ClothesTypeDeleter, ClothesSubtypesContract.ClothesTypesLoader {
+object DBManager : ClothesSubtypesContract.ClothesTypesManager {
     var uid: String? = null
         set(value) {
             field = value
@@ -23,10 +23,10 @@ object DBManager : ClothesSubtypesContract.ClothesTypeDeleter, ClothesSubtypesCo
 
     private val clothesSubtypesName = "clothes_subtypes"
 
-    fun clothesSubtype(clothesTypesByWearingWay: ClothesTypesByWearingWay): DatabaseReference =
+    private fun clothesSubtype(clothesTypesByWearingWay: ClothesTypesByWearingWay): DatabaseReference =
             userRef.child(clothesSubtypesName).child(clothesTypesByWearingWay.name.toLowerCase(Locale.getDefault()))
 
-    fun clothesSubType(
+    private fun clothesSubType(
             clothesSubtype: ClothesSubtype,
             clothesTypesByWearingWay: ClothesTypesByWearingWay
     ): DatabaseReference =
@@ -34,19 +34,21 @@ object DBManager : ClothesSubtypesContract.ClothesTypeDeleter, ClothesSubtypesCo
                     clothesSubtype.toString().toLowerCase(Locale.getDefault())
             )
 
-    fun deleteClothesSubtype(
+    private fun deleteClothesSubtypeImpl(
             clothesTypeByWearingWay: ClothesTypesByWearingWay,
             clothesSubtype: ClothesSubtype,
             completeListener: ActionCompleteListener? = null
     ) {
-        clothesSubType(clothesSubtype, clothesTypeByWearingWay).removeValue()
-            .addOnSuccessListener { completeListener?.onSuccess() }
-            .addOnFailureListener { completeListener?.onFailure() }
+        userRef.child(clothesSubtypesName).child(
+                clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault())
+        ).child(clothesSubtype.toString().toLowerCase(Locale.getDefault())).removeValue()
+                .addOnSuccessListener { completeListener?.onSuccess() }
+                .addOnFailureListener { completeListener?.onFailure() }
     }
 
 
     // TODO: implement
-    fun addClothingItem(
+    private fun addClothingItem(
             clothesTypeByWearingWay: ClothesTypesByWearingWay,
             clothesSubtype: ClothesSubtype,
             clothes: ClothingItem,
@@ -57,19 +59,18 @@ object DBManager : ClothesSubtypesContract.ClothesTypeDeleter, ClothesSubtypesCo
                 .addOnFailureListener { completeListener?.onFailure() }
     }
 
-    fun getClothesSubtypes(
+    private fun getClothesSubtypesImpl(
             clothesTypeByWearingWay: ClothesTypesByWearingWay,
             completeListener: ActionCompleteListener? = null
     ) {
         println(userRef.child(clothesSubtypesName).child(clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault())).key)
         userRef.child(clothesSubtypesName).child(clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault())).get()
                 .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
+                    if (task.isSuccessful && task.result?.value != null) {
                         val clothesSubtypes = mutableListOf<ClothesSubtype>()
 
-                        for (clothesSubtype in task.result?.value as List<*>) {
-                            clothesSubtype as String
-                            clothesSubtypes.add(clothesSubtypeByName(clothesTypeByWearingWay, clothesSubtype))
+                        for (clothesSubtypeSnapshot in task.result?.children ?: emptyList()) {
+                            clothesSubtypes.add(clothesSubtypeByName(clothesTypeByWearingWay, clothesSubtypeSnapshot.key!!))
                         }
                         completeListener?.onClothesSubtypesLoaded(clothesSubtypes)
                     } else {
@@ -78,17 +79,33 @@ object DBManager : ClothesSubtypesContract.ClothesTypeDeleter, ClothesSubtypesCo
                 }
     }
 
+    private fun addClothesSubtypeImpl(
+            clothesTypeByWearingWay: ClothesTypesByWearingWay,
+            clothesSubtype: ClothesSubtype,
+            completeListener: ActionCompleteListener? = null
+    ) {
+        userRef.child(clothesSubtypesName).child(
+                clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault())
+        ).child(clothesSubtype.toString().toLowerCase(Locale.getDefault())).setValue(true)
+                .addOnSuccessListener { completeListener?.onSuccess() }
+                .addOnFailureListener { completeListener?.onFailure() }
+    }
 
-    override fun clothesSubtypeDelete(
+
+    override fun deleteClothesSubtype(
             clothesTypeByWearingWay: ClothesTypesByWearingWay,
             clothesType: ClothesSubtype,
             actionCompleteListener: ActionCompleteListener
     ) {
-        deleteClothesSubtype(clothesTypeByWearingWay, clothesType, actionCompleteListener)
+        deleteClothesSubtypeImpl(clothesTypeByWearingWay, clothesType, actionCompleteListener)
     }
 
     override fun loadClothesSubtypes(clothesTypeByWearingWay: ClothesTypesByWearingWay, completeListener: ActionCompleteListener) {
-        getClothesSubtypes(clothesTypeByWearingWay, completeListener)
+        getClothesSubtypesImpl(clothesTypeByWearingWay, completeListener)
+    }
+
+    override fun addClothesSubtype(clothesTypeByWearingWay: ClothesTypesByWearingWay, clothesType: ClothesSubtype, actionCompleteListener: ActionCompleteListener) {
+        addClothesSubtypeImpl(clothesTypeByWearingWay, clothesType, actionCompleteListener)
     }
 }
 

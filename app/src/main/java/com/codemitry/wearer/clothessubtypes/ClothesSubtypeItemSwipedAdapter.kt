@@ -11,8 +11,8 @@ import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.mvp.contracts.clothessubtypes.ClothesSubtypesContract
 
 class ClothesSubtypeItemSwipedAdapter(
-    private val clothesTypes: List<ClothesSubtype>,
-    private val onItemClickListener: ClothesSubtypesContract.OnClothesTypeAddClickListener
+        private var clothesTypes: List<ClothesSubtype>,
+        private val onItemClickListener: ClothesSubtypesContract.OnClothesTypeAddClickListener
 ) : RecyclerView.Adapter<ClothesSubtypeItemSwipedAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -27,9 +27,14 @@ class ClothesSubtypeItemSwipedAdapter(
         }
     }
 
+    fun setClothesTypes(clothesTypes: List<ClothesSubtype>) {
+        this.clothesTypes = clothesTypes
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.clothes_subtype_item_swiped, parent, false)
+                .inflate(R.layout.clothes_subtype_item_swiped, parent, false)
         return ViewHolder(itemView)
     }
 
