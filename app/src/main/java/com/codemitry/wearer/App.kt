@@ -6,6 +6,8 @@ import com.codemitry.wearer.di.modules.ClothesSubtypeModule
 import com.codemitry.wearer.di.modules.ClothesTypeModule
 import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.models.ClothesTypesByWearingWay
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class App : Application() {
 
@@ -15,11 +17,16 @@ class App : Application() {
     lateinit var clothesSubtypeComponent: ClothesSubtypeComponent
     private lateinit var clothesSubtypeModule: ClothesSubtypeModule
 
+    override fun onCreate() {
+        super.onCreate()
+        Firebase.database.setPersistenceEnabled(true)
+    }
+
     fun setClothesType(clothesType: ClothesTypesByWearingWay) {
         clothesTypeModule = ClothesTypeModule(clothesType)
         clothesTypeComponent =
-            DaggerClothesTypeComponent.builder().clothesTypeModule(clothesTypeModule)
-                .build()
+                DaggerClothesTypeComponent.builder().clothesTypeModule(clothesTypeModule)
+                        .build()
     }
 
     fun setClothesSubtype(clothesType: ClothesSubtype) {

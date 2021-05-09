@@ -6,13 +6,27 @@ import com.codemitry.wearer.mvp.contracts.clothessubtypes.ClothesSubtypesContrac
 import javax.inject.Inject
 
 class ClothesSubtypesPresenter @Inject constructor(
-    override var clothesType: ClothesTypesByWearingWay,
-    var clothesTypeDeleter: ClothesSubtypesContract.ClothesTypeDeleter
+        override var clothesType: ClothesTypesByWearingWay,
+        var clothesTypeDeleter: ClothesSubtypesContract.ClothesTypeDeleter,
+        var clothesSubtypesLoader: ClothesSubtypesContract.ClothesTypesLoader
 ) : ClothesSubtypesContract.Presenter {
 
     override var view: ClothesSubtypesContract.View? = null
 
     private var userClothesTypes = mutableListOf<ClothesSubtype>()
+
+    init {
+        clothesSubtypesLoader.loadClothesSubtypes(clothesType, object : ActionCompleteListener {
+            override fun onClothesSubtypesLoaded(clothesSubtypes: List<ClothesSubtype>) {
+                userClothesTypes.clear()
+                userClothesTypes.addAll(clothesSubtypes)
+            }
+
+            override fun onFailure() {
+                // TODO: on failure view
+            }
+        })
+    }
 
     override fun onViewAttached(view: ClothesSubtypesContract.View) {
         super.onViewAttached(view)

@@ -11,12 +11,20 @@ import dagger.Provides
 class ClothesTypeModule(val clothesType: ClothesTypesByWearingWay) {
 
     @Provides
-    fun provideClothesSubtypesPresenter(clothesSubtypeDeleter: ClothesSubtypesContract.ClothesTypeDeleter): ClothesSubtypesContract.Presenter {
-        return ClothesSubtypesPresenter(clothesType, clothesSubtypeDeleter)
+    fun provideClothesSubtypesPresenter(
+            clothesSubtypeDeleter: ClothesSubtypesContract.ClothesTypeDeleter,
+            clothesSubtypesLoader: ClothesSubtypesContract.ClothesTypesLoader
+    ): ClothesSubtypesContract.Presenter {
+        return ClothesSubtypesPresenter(clothesType, clothesSubtypeDeleter, clothesSubtypesLoader)
     }
 
     @Provides
     fun provideClothesSubtypeDeleter(): ClothesSubtypesContract.ClothesTypeDeleter {
+        return DBManager
+    }
+
+    @Provides
+    fun provideClothesSubtypeLoader(): ClothesSubtypesContract.ClothesTypesLoader {
         return DBManager
     }
 }

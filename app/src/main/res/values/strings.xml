@@ -102,6 +102,7 @@
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="purchaseYear">Purchase year</string>
+    <string name="material">Material</string>
 
     <!--    -->
 </resources>

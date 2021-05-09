@@ -1,6 +1,7 @@
 package com.codemitry.wearer.models
 
 import com.codemitry.wearer.R
+import java.util.*
 
 enum class ClothesTypesByWearingWay {
     OUTERWEAR, LIGHT_CLOTHES, UNDERWEAR, SHOES, ACCESSORIES
@@ -9,6 +10,20 @@ enum class ClothesTypesByWearingWay {
 interface ClothesSubtype {
     val nameResource: Int
     val iconResource: Int
+}
+
+fun clothesTypeByName(clothesType: String): ClothesTypesByWearingWay {
+    return ClothesTypesByWearingWay.valueOf(clothesType.toUpperCase(Locale.getDefault()))
+}
+
+fun clothesSubtypeByName(clothesTypeByWearingWay: ClothesTypesByWearingWay, subtype: String): ClothesSubtype {
+    return when (clothesTypeByWearingWay) {
+        ClothesTypesByWearingWay.OUTERWEAR -> OuterwearTypes.valueOf(subtype.toUpperCase(Locale.getDefault()))
+        ClothesTypesByWearingWay.LIGHT_CLOTHES -> LightClothesTypes.valueOf(subtype.toUpperCase(Locale.getDefault()))
+        ClothesTypesByWearingWay.UNDERWEAR -> UnderwearTypes.valueOf(subtype.toUpperCase(Locale.getDefault()))
+        ClothesTypesByWearingWay.SHOES -> ShoesTypes.valueOf(subtype.toUpperCase(Locale.getDefault()))
+        ClothesTypesByWearingWay.ACCESSORIES -> AccessoriesTypes.valueOf(subtype.toUpperCase(Locale.getDefault()))
+    }
 }
 
 enum class OuterwearTypes(override val nameResource: Int, override val iconResource: Int) : ClothesSubtype {
@@ -42,8 +57,6 @@ enum class UnderwearTypes(override val nameResource: Int, override val iconResou
     BOXERS(R.string.boxers, R.drawable.boxers),
     NIGHTIE(R.string.nightie, R.drawable.nightie),
     SOCKS(R.string.socks, R.drawable.socks),
-//    JACKET(R.string.jacket, R.drawable.jacket),
-//    PONCHO(R.string.poncho, R.drawable.poncho),
 }
 
 enum class ShoesTypes(override val nameResource: Int, override val iconResource: Int) : ClothesSubtype {
