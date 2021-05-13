@@ -14,6 +14,12 @@ class ClothesSubtypesPresenter @Inject constructor(
 
     private var userClothesTypes = mutableListOf<ClothesSubtype>()
 
+    override fun onViewAttached(view: ClothesSubtypesContract.View) {
+        this.view = view
+
+        view.showClothesTypes(userClothesTypes)
+    }
+
     init {
         clothesTypesManager.loadClothesSubtypes(clothesType, object : ActionCompleteListener {
             override fun onClothesSubtypesLoaded(clothesSubtypes: List<ClothesSubtype>) {

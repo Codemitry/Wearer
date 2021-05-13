@@ -66,11 +66,6 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
 
         binding.addClothesSubtype.setOnClickListener { presenter.onClothesTypesAddClicked() }
 
-        clothesTypesAdapter = ClothesSubtypeItemSwipedAdapter(emptyList()) { clothesType ->
-            presenter.onClothesTypeOpenClick(clothesType)
-        }
-        binding.clothesTypesList.adapter = clothesTypesAdapter
-
         val itemTouchHelperCallback = RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this)
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.clothesTypesList)
     }
