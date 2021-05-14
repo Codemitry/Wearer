@@ -7,4 +7,8 @@
     <dimen name="clothesSubtypeHeight">60dp</dimen>
     <dimen name="clothesSubtypeItemCorner">5dp</dimen>
     <dimen name="clothesSubtypeBottomFragmentCorner">16dp</dimen>
+
+    <dimen name="tagSize">40dp</dimen>
+    <dimen name="checkableTagSize">50dp</dimen>
+    <dimen name="removeTagButtonSize">15dp</dimen>
 </resources>

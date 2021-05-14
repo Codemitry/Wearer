@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/tagSize"
+    android:layout_height="@dimen/tagSize"
+    android:layout_marginHorizontal="5dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:src="@drawable/wh_washing_30deg_extra_care"
+        android:scaleType="centerInside"
+        android:layout_margin="5dp" />
+
+    <ImageButton
+        android:id="@+id/remove"
+        android:layout_width="@dimen/removeTagButtonSize"
+        android:layout_height="@dimen/removeTagButtonSize"
+        android:src="@drawable/ic_baseline_close_24"
+        android:background="?android:attr/selectableItemBackground"
+
+        android:layout_gravity="top|end"
+        android:scaleType="center" />
+</FrameLayout>

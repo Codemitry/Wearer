@@ -95,14 +95,20 @@
     <string name="name">Name</string>
     <string name="brand">Brand</string>
     <string name="size">Size</string>
+    <string name="note">Note</string>
     <string name="addClothingItem">Add clothing item</string>
     <string name="addClothingItemButton">Add</string>
-    <string name="cancelAddinglothingItemButton">Cancel</string>
+    <string name="cancelAddingClothingItemButton">Cancel</string>
     <string name="pick_year">Pick a year</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="purchaseYear">Purchase year</string>
     <string name="material">Material</string>
+    <string name="addPhoto">Add photo</string>
+    <string name="takePhoto">Take photo</string>
+    <string name="pickFromGallery">Choose from gallery</string>
+    <string name="washingTags">Washing tags</string>
+    <string name="clothintItemNameMustNotBeEmpty">Clothing item\'s name must not be empty!</string>
 
     <!--    -->
 </resources>

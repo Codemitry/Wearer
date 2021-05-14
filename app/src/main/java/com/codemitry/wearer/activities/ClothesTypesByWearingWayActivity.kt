@@ -51,6 +51,7 @@ class ClothesTypesByWearingWayActivity : AppCompatActivity() {
                 }
                 else -> error("Unexpected clothes type")
             }
+            println("Here! set cloth: ${clothesType}")
             (application as App).setClothesType(clothesType)
             ClothesSubtypesActivity.start(this, clothesType, transitionView)
         }

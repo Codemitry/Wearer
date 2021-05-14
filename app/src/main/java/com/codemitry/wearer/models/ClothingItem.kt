@@ -1,17 +1,16 @@
 package com.codemitry.wearer.models
 
 import com.codemitry.wearer.R
-import java.net.URI
-import java.time.Year
 
 data class ClothingItem(
-    val name: String,
-    val brand: String? = null,
-    val size: String? = null,
-    val purchaseYear: Year? = null,
-    val materials: Set<String>? = null,
-    val caringLabels: Set<CaringLabels>,
-    val photo: URI
+        val name: String,
+        val brand: String? = null,
+        val size: String? = null,
+        val purchaseYear: Int? = null,
+        val material: String? = null,
+        val notes: String? = null,
+        val caringLabels: List<CaringLabels>?,
+        val photoUrl: String?
 )
 
 

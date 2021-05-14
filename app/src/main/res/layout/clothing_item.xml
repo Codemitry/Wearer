@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/clothesSubtypeHeight"
+    android:layout_marginHorizontal="10dp"
+
+    android:background="@drawable/white_ripple_background"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_marginBottom="1dp">
+
+    <ImageView
+        android:id="@+id/clothesTypeIcon"
+        android:layout_width="@dimen/clothesSubtypeHeight"
+        android:layout_height="@dimen/clothesSubtypeHeight"
+
+        tools:src="@drawable/overcoat"
+        android:padding="10dp"
+        app:tint="@color/blue" />
+
+    <TextView
+        android:id="@+id/clothingItemName"
+        style="@style/TextView"
+        android:textColor="@color/gray.light"
+        android:gravity="center"
+        tools:text="My overcoat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingEnd="40dp"
+        android:paddingStart="0dp" />
+
+</LinearLayout>

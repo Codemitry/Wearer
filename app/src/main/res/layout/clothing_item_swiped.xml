@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+
+    android:layout_height="@dimen/clothesSubtypeHeight">
+
+    <RelativeLayout
+        android:id="@+id/view_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pink">
+
+        <ImageView
+            android:id="@+id/delete_icon"
+            android:layout_width="@dimen/clothesSubtypeHeight"
+            android:layout_height="@dimen/clothesSubtypeHeight"
+            android:paddingVertical="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            app:tint="@color/gray.light"
+            android:src="@drawable/ic_delete" />
+
+        <TextView
+            style="@style/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:layout_toStartOf="@id/delete_icon"
+            android:text="@string/delete"
+            android:textColor="@color/gray.light"
+            android:textAllCaps="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/view_foreground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/white_ripple_background">
+
+        <ImageView
+            android:id="@+id/clothesTypeIcon"
+            android:layout_width="@dimen/clothesSubtypeHeight"
+            android:layout_height="@dimen/clothesSubtypeHeight"
+
+            tools:src="@drawable/overcoat"
+            android:padding="10dp"
+            app:tint="@color/blue"
+            android:layout_marginStart="20dp" />
+
+        <TextView
+            android:id="@+id/clothingItemName"
+            style="@style/TextView"
+            android:textColor="@color/gray.light"
+            android:gravity="center"
+            tools:text="@string/overcoat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingEnd="40dp"
+            android:paddingStart="0dp" />
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codemitry.wearer">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -10,6 +15,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wearer">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.codemitry.wearer.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/paths" />
+        </provider>
+
         <activity android:name=".activities.MyClothesActivity"></activity>
         <activity android:name=".activities.ClothesSubtypesActivity" />
         <activity android:name=".activities.ClothesTypesByWearingWayActivity" />

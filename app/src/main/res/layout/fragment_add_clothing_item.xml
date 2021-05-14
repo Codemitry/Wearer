@@ -93,6 +93,119 @@
                 android:textColor="@color/gray" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayout"
+            android:id="@+id/material"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/material">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="40" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayout"
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/note">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="100" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            style="@style/TextView"
+            android:textColor="@color/gray.light"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+
+            android:text="@string/washingTags" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            >
+
+            <HorizontalScrollView
+                android:layout_marginTop="10dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/tagSize">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/tagList"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/tag_image_removable"
+                    android:orientation="horizontal" />
+
+            </HorizontalScrollView>
+
+            <ImageButton
+                android:id="@+id/addWashingTag"
+                android:layout_width="@dimen/tagSize"
+                android:layout_height="match_parent"
+
+                android:background="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_baseline_add_24"
+
+                android:layout_marginStart="10dp"
+                android:layout_gravity="end|center_vertical" />
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="150dp">
+
+            <TextView
+                style="@style/TextView"
+                android:textColor="@color/gray.light"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:text="@string/addPhoto" />
+
+            <ImageButton
+                android:id="@+id/addPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="@string/addPhoto" />
+
+            <ImageButton
+                android:id="@+id/deleteImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="?android:attr/selectableItemBackground"
+                android:tint="@color/white"
+
+                android:layout_margin="5dp"
+
+                android:src="@drawable/ic_baseline_close_24"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+
         <Button
             style="@style/Button.Confirm"
             android:id="@+id/addClothingItem"
@@ -109,7 +222,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="@string/cancelAddinglothingItemButton" />
+            android:text="@string/cancelAddingClothingItemButton" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

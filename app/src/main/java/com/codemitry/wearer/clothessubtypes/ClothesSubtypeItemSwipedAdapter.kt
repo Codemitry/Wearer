@@ -27,11 +27,6 @@ class ClothesSubtypeItemSwipedAdapter(
         }
     }
 
-    fun setClothesTypes(clothesTypes: List<ClothesSubtype>) {
-        this.clothesTypes = clothesTypes
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.clothes_subtype_item_swiped, parent, false)

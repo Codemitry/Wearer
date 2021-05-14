@@ -34,6 +34,7 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        println("in subtypes")
         (application as App).clothesTypeComponent.inject(this)
         binding = ActivityClothesSubtypesBinding.inflate(layoutInflater)
         setContentView(binding.root)
