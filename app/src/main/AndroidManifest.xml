@@ -26,9 +26,18 @@
                 android:resource="@xml/paths" />
         </provider>
 
-        <activity android:name=".activities.MyClothesActivity"></activity>
-        <activity android:name=".activities.ClothesSubtypesActivity" />
-        <activity android:name=".activities.ClothesTypesByWearingWayActivity" />
+        <activity
+            android:name=".activities.MyClothesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ClothingItemActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ClothesSubtypesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ClothesTypesByWearingWayActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"

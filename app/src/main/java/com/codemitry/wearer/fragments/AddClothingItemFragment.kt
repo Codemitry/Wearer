@@ -205,7 +205,7 @@ class AddClothingItemFragment(private val onItemAdded: ((clothingItem: ClothingI
     }
 
     override fun getClothingItemNote(): String? {
-        val text = binding.material.editText?.text?.toString()
+        val text = binding.note.editText?.text?.toString()
         if (text?.isEmpty() == true)
             return null
         return text

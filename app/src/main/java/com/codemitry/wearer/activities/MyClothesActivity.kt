@@ -81,6 +81,10 @@ class MyClothesActivity : AppCompatActivity(), MyClothesContract.View,
         Toast.makeText(this, "Error on loading", Toast.LENGTH_LONG).show()
     }
 
+    override fun showClothingItem(clothingItem: ClothingItem, clothesSubtype: ClothesSubtype) {
+        ClothingItemActivity.start(this, clothingItem, clothesSubtype)
+    }
+
     override fun showMyClothes(myClothes: List<ClothingItem>) {
         myClothesAdapter = MyClothesItemSwipedAdapter(myClothes) { clothingItem ->
             presenter.onOpenClothingItemClick(clothingItem)

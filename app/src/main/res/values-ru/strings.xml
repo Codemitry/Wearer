@@ -111,6 +111,7 @@
 
     <string name="washingTags">Бирки по уходу</string>
     <string name="clothintItemNameMustNotBeEmpty">Название элемента одежды не должно быть пустым!</string>
+    <string name="close">Закрыть</string>
 
     <!--    -->
 

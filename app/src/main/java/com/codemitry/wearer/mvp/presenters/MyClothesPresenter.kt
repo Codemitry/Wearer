@@ -55,7 +55,7 @@ class MyClothesPresenter @Inject constructor(
     }
 
     override fun onOpenClothingItemClick(clothingItem: ClothingItem) {
-        // TODO
+        view?.showClothingItem(clothingItem, clothesSubtype)
     }
 
     override fun onItemDeletingNegativeAnswer(clothingItem: ClothingItem, position: Int) {

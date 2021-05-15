@@ -1,17 +1,18 @@
 package com.codemitry.wearer.models
 
 import com.codemitry.wearer.R
+import java.io.Serializable
 
 data class ClothingItem(
-        val name: String,
-        val brand: String? = null,
-        val size: String? = null,
-        val purchaseYear: Int? = null,
-        val material: String? = null,
-        val notes: String? = null,
-        val caringLabels: List<CaringLabels>?,
-        val photoUrl: String?
-)
+    val name: String,
+    val brand: String? = null,
+    val size: String? = null,
+    val purchaseYear: Int? = null,
+    val material: String? = null,
+    val notes: String? = null,
+    val caringLabels: List<CaringLabels>?,
+    val photoUrl: String?
+) : Serializable
 
 
 enum class CaringLabels(val nameResource: Int, val iconResource: Int) {
