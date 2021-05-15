@@ -57,6 +57,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
+    implementation 'com.firebaseui:firebase-ui-storage:6.4.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+// If you're using Kotlin (and therefore, kapt), use kapt instead of annotationProcessor
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+
 
     // google services to auth
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
@@ -68,3 +74,4 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'

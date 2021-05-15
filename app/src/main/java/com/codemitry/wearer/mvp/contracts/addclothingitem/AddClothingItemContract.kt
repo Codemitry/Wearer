@@ -1,9 +1,6 @@
 package com.codemitry.wearer.mvp.contracts.addclothingitem
 
-import com.codemitry.wearer.db.ActionCompleteListener
 import com.codemitry.wearer.models.CaringLabels
-import com.codemitry.wearer.models.ClothesSubtype
-import com.codemitry.wearer.models.ClothesTypesByWearingWay
 import com.codemitry.wearer.models.ClothingItem
 import com.codemitry.wearer.mvp.contracts.base.BaseContract
 
@@ -33,7 +30,7 @@ abstract class AddClothingItemContract {
         fun showNameIsEmptyError()
         fun showErrorAddingClothingItem()
 
-        fun closeFragment()
+        fun closeFragment(clothingItem: ClothingItem)
 
     }
 
@@ -53,23 +50,6 @@ abstract class AddClothingItemContract {
         fun onDeleteImageClick()
 
         fun onAddClothingItemClick()
-    }
-
-    interface Interactor {
-        fun saveClothingItemPhoto(
-                clothesTypeByWearingWay: ClothesTypesByWearingWay,
-                clothesSubtype: ClothesSubtype,
-                clothingItemName: String,
-                photoBytes: ByteArray,
-                completeListener: ActionCompleteListener?,
-        )
-
-        fun saveClothingItem(
-                clothesTypeByWearingWay: ClothesTypesByWearingWay,
-                clothesSubtype: ClothesSubtype,
-                clothingItem: ClothingItem,
-                completeListener: ActionCompleteListener?
-        )
     }
 
 }

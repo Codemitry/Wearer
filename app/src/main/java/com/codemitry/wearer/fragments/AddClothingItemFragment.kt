@@ -18,6 +18,7 @@ import androidx.core.content.FileProvider
 import com.codemitry.wearer.R
 import com.codemitry.wearer.databinding.FragmentAddClothingItemBinding
 import com.codemitry.wearer.models.CaringLabels
+import com.codemitry.wearer.models.ClothingItem
 import com.codemitry.wearer.mvp.contracts.addclothingitem.AddClothingItemContract
 import com.codemitry.wearer.tagspicker.WashingTagsAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -26,7 +27,8 @@ import java.io.File
 import javax.inject.Inject
 
 
-class AddClothingItemFragment : BottomSheetDialogFragment(), AddClothingItemContract.View {
+class AddClothingItemFragment(private val onItemAdded: ((clothingItem: ClothingItem) -> Unit)? = null) :
+    BottomSheetDialogFragment(), AddClothingItemContract.View {
 
     private var _binding: FragmentAddClothingItemBinding? = null
 
@@ -257,7 +259,8 @@ class AddClothingItemFragment : BottomSheetDialogFragment(), AddClothingItemCont
         (binding.tagList.adapter as WashingTagsAdapter).removeLabel(caringLabel)
     }
 
-    override fun closeFragment() {
+    override fun closeFragment(clothingItem: ClothingItem) {
+        onItemAdded?.invoke(clothingItem)
         dismiss()
     }
 }

@@ -3,6 +3,7 @@ package com.codemitry.wearer.clothessubtypes
 import android.graphics.Canvas
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.codemitry.wearer.myclothes.MyClothesItemSwipedAdapter
 
 
 class RecyclerItemTouchHelper(
@@ -30,7 +31,11 @@ class RecyclerItemTouchHelper(
     override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
         if (viewHolder != null) {
             val foregroundView =
-                (viewHolder as ClothesSubtypeItemSwipedAdapter.ViewHolder).foregroundView
+                when (viewHolder) {
+                    is ClothesSubtypeItemSwipedAdapter.ViewHolder -> viewHolder.foregroundView
+                    is MyClothesItemSwipedAdapter.ViewHolder -> viewHolder.foregroundView
+                    else -> return
+                }
             getDefaultUIUtil().onSelected(foregroundView)
         }
     }
@@ -45,7 +50,11 @@ class RecyclerItemTouchHelper(
         isCurrentlyActive: Boolean
     ) {
         val foregroundView =
-            (viewHolder as ClothesSubtypeItemSwipedAdapter.ViewHolder).foregroundView
+            when (viewHolder) {
+                is ClothesSubtypeItemSwipedAdapter.ViewHolder -> viewHolder.foregroundView
+                is MyClothesItemSwipedAdapter.ViewHolder -> viewHolder.foregroundView
+                else -> return
+            }
 
         getDefaultUIUtil().onDrawOver(
             c,
@@ -60,7 +69,11 @@ class RecyclerItemTouchHelper(
 
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         val foregroundView =
-            (viewHolder as ClothesSubtypeItemSwipedAdapter.ViewHolder).foregroundView
+            when (viewHolder) {
+                is ClothesSubtypeItemSwipedAdapter.ViewHolder -> viewHolder.foregroundView
+                is MyClothesItemSwipedAdapter.ViewHolder -> viewHolder.foregroundView
+                else -> return
+            }
         getDefaultUIUtil().clearView(foregroundView)
     }
 
@@ -74,7 +87,11 @@ class RecyclerItemTouchHelper(
         isCurrentlyActive: Boolean
     ) {
         val foregroundView =
-            (viewHolder as ClothesSubtypeItemSwipedAdapter.ViewHolder).foregroundView
+            when (viewHolder) {
+                is ClothesSubtypeItemSwipedAdapter.ViewHolder -> viewHolder.foregroundView
+                is MyClothesItemSwipedAdapter.ViewHolder -> viewHolder.foregroundView
+                else -> return
+            }
         getDefaultUIUtil().onDraw(
             c,
             recyclerView,

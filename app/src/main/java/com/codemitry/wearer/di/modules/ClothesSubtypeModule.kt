@@ -18,7 +18,7 @@ class ClothesSubtypeModule(
 
     @Provides
     fun provideMyClothesPresenter(): MyClothesContract.Presenter {
-        return MyClothesPresenter(clothesType, clothesSubtype)
+        return MyClothesPresenter(clothesType, clothesSubtype, DBManager)
     }
 
     @Provides

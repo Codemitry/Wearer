@@ -42,22 +42,28 @@
         android:id="@+id/view_foreground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:backgroundTint="@color/light"
         android:background="@drawable/white_ripple_background">
 
         <ImageView
-            android:id="@+id/clothesTypeIcon"
-            android:layout_width="@dimen/clothesSubtypeHeight"
-            android:layout_height="@dimen/clothesSubtypeHeight"
+            android:id="@+id/clothingItemPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-            tools:src="@drawable/overcoat"
-            android:padding="10dp"
-            app:tint="@color/blue"
-            android:layout_marginStart="20dp" />
+            android:scaleType="centerCrop"
+            tools:src="@drawable/overcoat" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/scrim_bottom" />
 
         <TextView
             android:id="@+id/clothingItemName"
             style="@style/TextView"
-            android:textColor="@color/gray.light"
+            android:textColor="@color/white"
             android:gravity="center"
             tools:text="@string/overcoat"
             android:layout_width="match_parent"

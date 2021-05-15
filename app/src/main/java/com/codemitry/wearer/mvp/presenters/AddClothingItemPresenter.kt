@@ -6,13 +6,14 @@ import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.models.ClothesTypesByWearingWay
 import com.codemitry.wearer.models.ClothingItem
 import com.codemitry.wearer.mvp.contracts.addclothingitem.AddClothingItemContract
+import com.codemitry.wearer.mvp.contracts.myclothes.MyClothesContract
 import java.util.*
 import javax.inject.Inject
 
 class AddClothingItemPresenter @Inject constructor(
-        private val clothesTypesByWearingWay: ClothesTypesByWearingWay,
-        private val clothesSubtype: ClothesSubtype,
-        private val interactor: AddClothingItemContract.Interactor
+    private val clothesTypesByWearingWay: ClothesTypesByWearingWay,
+    private val clothesSubtype: ClothesSubtype,
+    private val interactor: MyClothesContract.Interactor
 ) : AddClothingItemContract.Presenter {
 
     override var view: AddClothingItemContract.View? = null
@@ -109,18 +110,18 @@ class AddClothingItemPresenter @Inject constructor(
         )
 
         interactor.saveClothingItem(
-                clothesTypesByWearingWay,
-                clothesSubtype,
-                clothingItem,
-                object : ActionCompleteListener {
-                    override fun onFailure() {
-                        view?.showErrorAddingClothingItem()
-                    }
-
-                    override fun onSuccess() {
-                        view?.closeFragment()
-                    }
+            clothesTypesByWearingWay,
+            clothesSubtype,
+            clothingItem,
+            object : ActionCompleteListener {
+                override fun onFailure() {
+                    view?.showErrorAddingClothingItem()
                 }
+
+                override fun onSuccess() {
+                    view?.closeFragment(clothingItem)
+                }
+            }
         )
     }
 }
