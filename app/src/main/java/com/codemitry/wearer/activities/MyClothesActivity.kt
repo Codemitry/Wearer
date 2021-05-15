@@ -3,6 +3,7 @@ package com.codemitry.wearer.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -74,6 +75,10 @@ class MyClothesActivity : AppCompatActivity(), MyClothesContract.View,
             clothingItem,
             position
         )
+    }
+
+    override fun showErrorLoading() {
+        Toast.makeText(this, "Error on loading", Toast.LENGTH_LONG).show()
     }
 
     override fun showMyClothes(myClothes: List<ClothingItem>) {

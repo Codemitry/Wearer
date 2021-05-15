@@ -33,7 +33,7 @@ class MyClothesPresenter @Inject constructor(
             }
 
             override fun onFailure() {
-                // todo: show error
+                view.showErrorLoading()
             }
         })
     }

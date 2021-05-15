@@ -16,6 +16,8 @@ abstract class MyClothesContract {
         fun showAddedClothingItem(clothingItem: ClothingItem, position: Int)
 
         fun askItemDeletingConfirmation(clothingItem: ClothingItem, position: Int)
+
+        fun showErrorLoading()
     }
 
     interface Presenter : BaseContract.BasePresenter<View> {
