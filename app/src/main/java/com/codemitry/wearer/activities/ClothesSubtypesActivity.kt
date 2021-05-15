@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
@@ -140,13 +141,17 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
                     }
                 }
             })
-                .show()
+            .show()
 
     }
 
     override fun showMyClothesActivity(clothesType: ClothesSubtype) {
         (application as App).setClothesSubtype(clothesType)
         MyClothesActivity.start(this)
+    }
+
+    override fun showErrorLoading() {
+        Toast.makeText(this, "Error on loading", Toast.LENGTH_LONG).show()
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int, position: Int) {

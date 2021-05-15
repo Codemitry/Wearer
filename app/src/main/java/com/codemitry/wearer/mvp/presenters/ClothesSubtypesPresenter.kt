@@ -30,7 +30,7 @@ class ClothesSubtypesPresenter @Inject constructor(
             }
 
             override fun onFailure() {
-                // TODO: on failure view
+                view?.showErrorLoading()
             }
         })
     }

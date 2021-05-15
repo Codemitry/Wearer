@@ -12,6 +12,8 @@ abstract class ClothesSubtypesContract {
         fun addClothesType(clothesType: ClothesSubtype, position: Int)
         fun askItemDeletingConfirmation(item: ClothesSubtype, position: Int)
         fun showMyClothesActivity(clothesType: ClothesSubtype)
+
+        fun showErrorLoading()
     }
 
     interface Presenter : BaseContract.BasePresenter<View>, OnClothesTypeAddClickListener {
