@@ -1,6 +1,5 @@
 package com.codemitry.wearer.mvp.presenters
 
-import com.codemitry.wearer.db.DBManager
 import com.codemitry.wearer.mvp.contracts.splash.SplashContract
 import javax.inject.Inject
 
@@ -13,7 +12,7 @@ class SplashPresenter : SplashContract.SplashPresenter {
 
     override fun onSplashScreenOpened() {
         if (signInChecker.signedIn()) {
-            DBManager.uid = signInChecker.userId()
+            signInChecker.saveUserId(signInChecker.userId()!!)
 
             view?.showWearerActivity()
         } else {
