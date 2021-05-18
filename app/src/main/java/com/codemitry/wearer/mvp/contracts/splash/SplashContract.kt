@@ -9,7 +9,7 @@ abstract class SplashContract {
     }
 
     interface SplashPresenter : BaseContract.BasePresenter<SplashView> {
-        var signInChecker: SignInChecker
+        val signInChecker: SignInChecker
         fun onSplashScreenOpened()
     }
 

@@ -13,6 +13,8 @@ abstract class SignInContract {
 
     interface SignInPresenter : BaseContract.BasePresenter<SignInView> {
 
+        val signInInteractor: SignInInteractor
+
         fun onGoogleSignInClick()
         fun onAnonymousSignInClick()
         fun onGoogleSignInSuccessful(idToken: String)

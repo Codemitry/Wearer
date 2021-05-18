@@ -2,7 +2,7 @@ package com.codemitry.wearer.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.codemitry.wearer.App
+import com.codemitry.wearer.ComponentsProvider
 import com.codemitry.wearer.databinding.ActivitySplashBinding
 import com.codemitry.wearer.mvp.contracts.splash.SplashContract
 import javax.inject.Inject
@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity(), SplashContract.SplashView {
     private lateinit var binding: ActivitySplashBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (application as App).applicationComponent.inject(this)
+        (application as ComponentsProvider).splashComponentBuilder.build().inject(this)
         binding = ActivitySplashBinding.inflate(layoutInflater)
 
         setContentView(binding.root)

@@ -3,12 +3,12 @@ package com.codemitry.wearer.mvp.presenters
 import com.codemitry.wearer.mvp.contracts.signin.SignInContract
 import javax.inject.Inject
 
-class SignInPresenter @Inject constructor() : SignInContract.SignInPresenter,
+class SignInPresenter : SignInContract.SignInPresenter,
     SignInContract.SignInInteractor.OnSignInListener {
     override var view: SignInContract.SignInView? = null
 
     @Inject
-    lateinit var signInInteractor: SignInContract.SignInInteractor
+    override lateinit var signInInteractor: SignInContract.SignInInteractor
 
     override fun onSuccess() {
         view?.showMainActivity()

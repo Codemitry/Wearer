@@ -79,7 +79,7 @@ object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContrac
         userRef.child(clothesSubtypesName)
             .child(clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault())).get()
             .addOnCompleteListener { task ->
-                if (task.isSuccessful && task.result?.value != null) {
+                if (task.isSuccessful) {
                     val clothesSubtypes = mutableListOf<ClothesSubtype>()
 
                     for (clothesSubtypeSnapshot in task.result?.children ?: emptyList()) {
@@ -216,7 +216,7 @@ object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContrac
             .child(clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault()))
             .child(clothesSubtype.toString().toLowerCase(Locale.getDefault())).get()
             .addOnCompleteListener { task ->
-                if (task.isSuccessful && task.result?.value != null) {
+                if (task.isSuccessful) {
                     val clothingItems = mutableListOf<ClothingItem>()
 
                     for (clothingItemSnapshot in task.result?.children ?: emptyList()) {

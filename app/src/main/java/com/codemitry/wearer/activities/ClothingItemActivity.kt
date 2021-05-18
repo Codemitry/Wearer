@@ -64,6 +64,9 @@ class ClothingItemActivity : AppCompatActivity() {
             binding.caringLabelsList.adapter = CaringLabelsAdapter(clothingItem.caringLabels!!)
         }
 
+        if (clothingItem.photoUrl == null) {
+            binding.photo.visibility = View.GONE
+        }
 
         clothingItem.photoUrl?.let {
             Glide.with(this)

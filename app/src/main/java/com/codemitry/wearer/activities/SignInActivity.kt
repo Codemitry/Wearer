@@ -4,16 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.codemitry.wearer.App
+import com.codemitry.wearer.ComponentsProvider
 import com.codemitry.wearer.R
 import com.codemitry.wearer.databinding.ActivitySignInBinding
 import com.codemitry.wearer.mvp.contracts.signin.SignInContract
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
 const val RC_SIGN_IN = 5112
@@ -27,7 +27,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.SignInView {
 
 
     override fun showSignInError() {
-        Toast.makeText(this, "Failure auth", Toast.LENGTH_LONG).show()
+        Snackbar.make(binding.root, "Failure auth", Snackbar.LENGTH_LONG).show()
     }
 
     override fun showMainActivity() {
@@ -39,7 +39,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.SignInView {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySignInBinding.inflate(layoutInflater)
-        (application as App).applicationComponent.inject(this)
+        (application as ComponentsProvider).signInComponentBuilder.build().inject(this)
 
         setContentView(binding.root)
 
