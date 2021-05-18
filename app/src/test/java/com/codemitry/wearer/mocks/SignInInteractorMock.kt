@@ -1,4 +1,4 @@
-package com.codemitry.wearer.mvp.presenters
+package com.codemitry.wearer.mocks
 
 import com.codemitry.wearer.mvp.contracts.signin.SignInContract
 
