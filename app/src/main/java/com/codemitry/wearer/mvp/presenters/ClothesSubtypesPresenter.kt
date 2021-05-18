@@ -17,6 +17,7 @@ class ClothesSubtypesPresenter @Inject constructor(
     override fun onViewAttached(view: ClothesSubtypesContract.View) {
         this.view = view
 
+        view.showClothesType(clothesType)
         view.showClothesTypes(userClothesTypes)
     }
 
@@ -89,11 +90,18 @@ class ClothesSubtypesPresenter @Inject constructor(
 
 
     override fun onAddClothesTypeClick(clothesType: ClothesSubtype) {
-        clothesTypesManager.addClothesSubtype(this.clothesType, clothesType, object : ActionCompleteListener {
-            override fun onSuccess() {
-                userClothesTypes.add(clothesType)
-                view?.addClothesType(clothesType, userClothesTypes.lastIndex)
-            }
-        })
+        clothesTypesManager.addClothesSubtype(
+            this.clothesType,
+            clothesType,
+            object : ActionCompleteListener {
+                override fun onSuccess() {
+                    userClothesTypes.add(clothesType)
+                    view?.addClothesType(clothesType, userClothesTypes.lastIndex)
+                }
+
+                override fun onFailure() {
+                    view?.showErrorLoading()
+                }
+            })
     }
 }

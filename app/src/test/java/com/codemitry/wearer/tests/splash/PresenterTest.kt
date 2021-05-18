@@ -1,4 +1,4 @@
-package com.codemitry.wearer.splash
+package com.codemitry.wearer.tests.splash
 
 import com.codemitry.wearer.mvp.contracts.splash.SplashContract
 import com.codemitry.wearer.mvp.presenters.SplashPresenter

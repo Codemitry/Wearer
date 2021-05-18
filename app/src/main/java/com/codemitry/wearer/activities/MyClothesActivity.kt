@@ -3,12 +3,11 @@ package com.codemitry.wearer.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.codemitry.wearer.App
+import com.codemitry.wearer.ComponentsProvider
 import com.codemitry.wearer.R
 import com.codemitry.wearer.clothessubtypes.RecyclerItemTouchHelper
 import com.codemitry.wearer.databinding.ActivityMyClothesBinding
@@ -32,7 +31,8 @@ class MyClothesActivity : AppCompatActivity(), MyClothesContract.View,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (application as App).clothesSubtypeComponent.inject(this)
+        require((application as ComponentsProvider).clothingItemsComponentBuilder != null)
+        (application as ComponentsProvider).clothingItemsComponentBuilder!!.build().inject(this)
 
         binding = ActivityMyClothesBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -66,7 +66,7 @@ class MyClothesActivity : AppCompatActivity(), MyClothesContract.View,
         val fragment = AddClothingItemFragment { item ->
             presenter.onClothingItemAdded(item)
         }
-        (application as App).clothesSubtypeComponent.inject(fragment)
+//        (application as App).clothingItemsComponent.inject(fragment) TODO: write inject
         fragment.show(supportFragmentManager, AddClothingItemFragment::class.simpleName)
     }
 
@@ -78,7 +78,7 @@ class MyClothesActivity : AppCompatActivity(), MyClothesContract.View,
     }
 
     override fun showErrorLoading() {
-        Toast.makeText(this, "Error on loading", Toast.LENGTH_LONG).show()
+        Snackbar.make(binding.root, "Error on loading", Snackbar.LENGTH_LONG).show()
     }
 
     override fun showClothingItem(clothingItem: ClothingItem, clothesSubtype: ClothesSubtype) {

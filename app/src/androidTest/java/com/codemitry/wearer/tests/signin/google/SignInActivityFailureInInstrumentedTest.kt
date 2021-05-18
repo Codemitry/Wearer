@@ -1,4 +1,4 @@
-package com.codemitry.wearer.signin.google
+package com.codemitry.wearer.tests.signin.google
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click

@@ -1,4 +1,4 @@
-package com.codemitry.wearer.signin.anon
+package com.codemitry.wearer.tests.signin.google
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -38,7 +38,7 @@ class SignInActivitySuccessInInstrumentedTest {
         onView(withId(R.id.googleSignIn)).check(matches(isDisplayed()))
         onView(withId(R.id.anonymousSignIn)).check(matches(isDisplayed()))
 
-        onView(withId(R.id.anonymousSignIn)).perform(click())
+        onView(withId(R.id.googleSignIn)).perform(click())
 
         // --- start ClothesByWearingWay activity ---
 

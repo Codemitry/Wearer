@@ -4,13 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.codemitry.wearer.App
+import com.codemitry.wearer.ComponentsProvider
 import com.codemitry.wearer.R
 import com.codemitry.wearer.clothessubtypes.ClothesSubtypeItemSwipedAdapter
 import com.codemitry.wearer.clothessubtypes.RecyclerItemTouchHelper
@@ -26,7 +25,6 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
     RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
     private lateinit var binding: ActivityClothesSubtypesBinding
-    private lateinit var clothesTypeByWearingWay: ClothesTypesByWearingWay
 
     private lateinit var clothesTypesAdapter: ClothesSubtypeItemSwipedAdapter
 
@@ -35,35 +33,10 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (application as App).clothesTypeComponent.inject(this)
+        require((application as ComponentsProvider).clothesSubtypesComponentBuilder != null)
+        (application as ComponentsProvider).clothesSubtypesComponentBuilder?.build()?.inject(this)
         binding = ActivityClothesSubtypesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        clothesTypeByWearingWay =
-            intent.getSerializableExtra(ClothesTypesByWearingWay::class.simpleName) as ClothesTypesByWearingWay
-        when (clothesTypeByWearingWay) {
-            ClothesTypesByWearingWay.OUTERWEAR -> {
-                binding.toolbar.title = getString(R.string.outerwear)
-                binding.headerImage.setImageResource(R.drawable.outerwear)
-            }
-
-            ClothesTypesByWearingWay.LIGHT_CLOTHES -> {
-                binding.toolbar.title = getString(R.string.lightClothes)
-                binding.headerImage.setImageResource(R.drawable.light_clothes)
-            }
-            ClothesTypesByWearingWay.UNDERWEAR -> {
-                binding.toolbar.title = getString(R.string.underwear)
-                binding.headerImage.setImageResource(R.drawable.underwear)
-            }
-            ClothesTypesByWearingWay.SHOES -> {
-                binding.toolbar.title = getString(R.string.shoes)
-                binding.headerImage.setImageResource(R.drawable.shoes)
-            }
-            ClothesTypesByWearingWay.ACCESSORIES -> {
-                binding.toolbar.title = getString(R.string.accessories)
-                binding.headerImage.setImageResource(R.drawable.accessories)
-            }
-        }
 
         binding.addClothesSubtype.setOnClickListener { presenter.onClothesTypesAddClicked() }
 
@@ -97,6 +70,11 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
 
             ContextCompat.startActivity(from, intent, options.toBundle())
         }
+    }
+
+    override fun showClothesType(clothesType: ClothesTypesByWearingWay) {
+        binding.toolbar.title = getString(clothesType.nameResource)
+        binding.headerImage.setImageResource(clothesType.iconResource)
     }
 
 
@@ -146,12 +124,12 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
     }
 
     override fun showMyClothesActivity(clothesType: ClothesSubtype) {
-        (application as App).setClothesSubtype(clothesType)
+        (application as ComponentsProvider).clothesSubtype = clothesType
         MyClothesActivity.start(this)
     }
 
     override fun showErrorLoading() {
-        Toast.makeText(this, "Error on loading", Toast.LENGTH_LONG).show()
+        Snackbar.make(binding.root, "Error on loading", Snackbar.LENGTH_LONG).show()
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int, position: Int) {

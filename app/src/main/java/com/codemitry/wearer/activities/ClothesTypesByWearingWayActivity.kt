@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.codemitry.wearer.App
+import com.codemitry.wearer.ComponentsProvider
 import com.codemitry.wearer.R
 import com.codemitry.wearer.databinding.ActivityClothesTypesByWearingWayBinding
 import com.codemitry.wearer.models.ClothesTypesByWearingWay
@@ -51,8 +51,7 @@ class ClothesTypesByWearingWayActivity : AppCompatActivity() {
                 }
                 else -> error("Unexpected clothes type")
             }
-            println("Here! set cloth: ${clothesType}")
-            (application as App).setClothesType(clothesType)
+            (application as ComponentsProvider).clothesType = clothesType
             ClothesSubtypesActivity.start(this, clothesType, transitionView)
         }
 

@@ -1,4 +1,4 @@
-package com.codemitry.wearer.signin
+package com.codemitry.wearer.tests.signin
 
 import com.codemitry.wearer.mocks.SignInInteractorMock
 import com.codemitry.wearer.mvp.contracts.signin.SignInContract

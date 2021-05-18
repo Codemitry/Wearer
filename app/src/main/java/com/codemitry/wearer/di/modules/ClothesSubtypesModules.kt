@@ -8,17 +8,21 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class ClothesTypeModule(val clothesType: ClothesTypesByWearingWay) {
+open class ClothesSubtypesPresenterModule(val clothesType: ClothesTypesByWearingWay) {
 
     @Provides
-    fun provideClothesSubtypesPresenter(
-            clothesSubtypeManager: ClothesSubtypesContract.ClothesTypesManager,
+    open fun provideClothesSubtypesPresenter(
+        clothesSubtypeManager: ClothesSubtypesContract.ClothesTypesManager,
     ): ClothesSubtypesContract.Presenter {
         return ClothesSubtypesPresenter(clothesType, clothesSubtypeManager)
     }
+}
+
+@Module
+open class ClothesSubtypesManagerModule(val clothesType: ClothesTypesByWearingWay) {
 
     @Provides
-    fun provideClothesSubtypeManager(): ClothesSubtypesContract.ClothesTypesManager {
+    open fun provideClothesSubtypeManager(): ClothesSubtypesContract.ClothesTypesManager {
         return DBManager
     }
 }

@@ -3,8 +3,12 @@ package com.codemitry.wearer.models
 import com.codemitry.wearer.R
 import java.util.*
 
-enum class ClothesTypesByWearingWay {
-    OUTERWEAR, LIGHT_CLOTHES, UNDERWEAR, SHOES, ACCESSORIES
+enum class ClothesTypesByWearingWay(val nameResource: Int, val iconResource: Int) {
+    OUTERWEAR(R.string.outerwear, R.drawable.outerwear),
+    LIGHT_CLOTHES(R.string.lightClothes, R.drawable.light_clothes),
+    UNDERWEAR(R.string.underwear, R.drawable.underwear),
+    SHOES(R.string.shoes, R.drawable.shoes),
+    ACCESSORIES(R.string.accessories, R.drawable.accessories)
 }
 
 interface ClothesSubtype {

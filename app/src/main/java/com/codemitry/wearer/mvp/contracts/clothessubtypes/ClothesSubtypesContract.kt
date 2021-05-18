@@ -7,6 +7,7 @@ import com.codemitry.wearer.mvp.contracts.base.BaseContract
 
 abstract class ClothesSubtypesContract {
     interface View : BaseContract.BaseView {
+        fun showClothesType(clothesType: ClothesTypesByWearingWay)
         fun showPossibleClothesTypes(clothes: List<ClothesSubtype>)
         fun showClothesTypes(clothes: List<ClothesSubtype>)
         fun addClothesType(clothesType: ClothesSubtype, position: Int)
