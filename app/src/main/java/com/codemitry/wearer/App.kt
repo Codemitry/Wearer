@@ -1,14 +1,8 @@
 package com.codemitry.wearer
 
 import android.app.Application
-import com.codemitry.wearer.di.delegates.ClothesSubtypesComponentBuilder
-import com.codemitry.wearer.di.delegates.ClothingItemsComponentBuilder
-import com.codemitry.wearer.di.delegates.SignInComponentBuilder
-import com.codemitry.wearer.di.delegates.SplashComponentBuilder
-import com.codemitry.wearer.di.impl.ClothesSubtypesComponentBuilderImpl
-import com.codemitry.wearer.di.impl.ClothingItemsComponentBuilderImpl
-import com.codemitry.wearer.di.impl.SignInComponentBuilderImpl
-import com.codemitry.wearer.di.impl.SplashComponentBuilderImpl
+import com.codemitry.wearer.di.delegates.*
+import com.codemitry.wearer.di.impl.*
 import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.models.ClothesTypesByWearingWay
 import com.google.firebase.database.ktx.database
@@ -47,14 +41,19 @@ class App : Application(), ComponentsProvider {
                         clothesType!!,
                         value
                     )
+
+                    addClothingItemComponentBuilder = AddClothingItemComponentBuilderImpl(
+                        clothesType!!,
+                        value
+                    )
                 }
             }
         }
+
+    override var addClothingItemComponentBuilder: AddClothingItemComponentBuilder? = null
 
     override fun onCreate() {
         super.onCreate()
         Firebase.database.setPersistenceEnabled(true)
     }
-
-
 }

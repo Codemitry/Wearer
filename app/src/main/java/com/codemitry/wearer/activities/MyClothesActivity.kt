@@ -66,7 +66,9 @@ class MyClothesActivity : AppCompatActivity(), MyClothesContract.View,
         val fragment = AddClothingItemFragment { item ->
             presenter.onClothingItemAdded(item)
         }
-//        (application as App).clothingItemsComponent.inject(fragment) TODO: write inject
+        require((application as ComponentsProvider).addClothingItemComponentBuilder != null)
+        (application as ComponentsProvider).addClothingItemComponentBuilder?.build()
+            ?.inject(fragment)
         fragment.show(supportFragmentManager, AddClothingItemFragment::class.simpleName)
     }
 
