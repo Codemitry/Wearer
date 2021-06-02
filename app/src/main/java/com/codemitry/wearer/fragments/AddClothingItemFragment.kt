@@ -212,7 +212,7 @@ class AddClothingItemFragment(private val onItemAdded: ((clothingItem: ClothingI
     }
 
     override fun showNameIsEmptyError() {
-        Toast.makeText(context, R.string.clothintItemNameMustNotBeEmpty, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, R.string.clothingItemNameMustNotBeEmpty, Toast.LENGTH_LONG).show()
     }
 
     override fun showErrorAddingClothingItem() {

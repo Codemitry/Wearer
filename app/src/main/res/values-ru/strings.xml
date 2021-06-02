@@ -109,9 +109,10 @@
     <string name="takePhoto">Сделать фото</string>
     <string name="pickFromGallery">Выбрать из галереи</string>
 
-    <string name="washingTags">Бирки по уходу</string>
-    <string name="clothintItemNameMustNotBeEmpty">Название элемента одежды не должно быть пустым!</string>
+    <string name="caringLabels">Бирки по уходу</string>
+    <string name="clothingItemNameMustNotBeEmpty">Название элемента одежды не должно быть пустым!</string>
     <string name="close">Закрыть</string>
+    <string name="chooseWashingTags">Выберите бирки по уходу</string>
 
     <!--    -->
 

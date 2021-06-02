@@ -7,6 +7,9 @@
     <color name="gray.light">#6d6d6d</color>
     <color name="gray.dark">#1b1b1b</color>
 
+
+    <color name="gray.transparent">#4A1B1B1B</color>
+
     <color name="light">#d8dde9</color>
     <color name="yellow">#fdeecc</color>
     <color name="pink">#facedf</color>

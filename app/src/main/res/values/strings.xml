@@ -107,9 +107,11 @@
     <string name="addPhoto">Add photo</string>
     <string name="takePhoto">Take photo</string>
     <string name="pickFromGallery">Choose from gallery</string>
-    <string name="washingTags">Washing tags</string>
-    <string name="clothintItemNameMustNotBeEmpty">Clothing item\'s name must not be empty!</string>
+    <string name="caringLabels">Caring labels</string>
+    <string name="clothingItemNameMustNotBeEmpty">Clothing item\'s name must not be empty!</string>
     <string name="close">Close</string>
+
+    <string name="chooseWashingTags">Choose caring labels</string>
 
     <!--    -->
 </resources>

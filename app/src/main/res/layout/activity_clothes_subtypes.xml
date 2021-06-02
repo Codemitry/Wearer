@@ -91,6 +91,6 @@
         app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="bottom|end"
         android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/blue" />
+        android:backgroundTint="?attr/colorPrimary" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

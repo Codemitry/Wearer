@@ -18,7 +18,7 @@
             android:id="@+id/divider"
             android:layout_width="50dp"
             android:layout_height="3dp"
-            android:background="@color/blue"
+            android:background="?attr/colorPrimary"
 
             android:layout_marginBottom="20dp"
             android:layout_gravity="center_horizontal" />
@@ -40,6 +40,7 @@
             android:hint="@string/name">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLength="50" />
@@ -53,6 +54,7 @@
             android:hint="@string/brand">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -67,6 +69,7 @@
             android:hint="@string/size">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLength="30" />
@@ -83,14 +86,12 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
-
+                style="@style/TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:maxLength="30"
-                android:inputType="none"
-
-                android:textColor="@color/gray" />
+                android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -101,6 +102,7 @@
             android:hint="@string/material">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLength="40" />
@@ -114,6 +116,7 @@
             android:hint="@string/note">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLength="100" />
@@ -122,18 +125,17 @@
 
         <TextView
             style="@style/TextView"
-            android:textColor="@color/gray.light"
+            android:textColor="?attr/textColorSecondary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
 
-            android:text="@string/washingTags" />
+            android:text="@string/caringLabels" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
             >
 
             <HorizontalScrollView
@@ -160,6 +162,7 @@
 
                 android:background="?android:attr/selectableItemBackground"
                 android:src="@drawable/ic_baseline_add_24"
+                android:tint="?attr/textColorSecondary"
 
                 android:layout_marginStart="10dp"
                 android:layout_gravity="end|center_vertical" />
@@ -174,7 +177,7 @@
 
             <TextView
                 style="@style/TextView"
-                android:textColor="@color/gray.light"
+                android:textColor="?attr/textColorSecondary"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAlignment="center"

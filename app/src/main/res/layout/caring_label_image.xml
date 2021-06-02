@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/tagSize"
     android:layout_height="@dimen/tagSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="5dp"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -10,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:src="@drawable/wh_washing_30deg_extra_care"
+        app:tint="?textColorPrimary"
         android:scaleType="centerInside"
         android:layout_margin="5dp" />
 

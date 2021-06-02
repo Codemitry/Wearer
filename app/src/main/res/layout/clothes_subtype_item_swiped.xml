@@ -42,7 +42,7 @@
         android:id="@+id/view_foreground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/white_ripple_background">
+        android:background="@drawable/ripple_background">
 
         <ImageView
             android:id="@+id/clothesTypeIcon"
@@ -51,13 +51,13 @@
 
             tools:src="@drawable/overcoat"
             android:padding="10dp"
-            app:tint="@color/blue"
+            app:tint="?colorPrimary"
             android:layout_marginStart="20dp" />
 
         <TextView
             android:id="@+id/clothesTypeName"
             style="@style/TextView"
-            android:textColor="@color/gray.light"
+            android:textColor="?textColorSecondary"
             android:gravity="center"
             tools:text="@string/overcoat"
             android:layout_width="match_parent"

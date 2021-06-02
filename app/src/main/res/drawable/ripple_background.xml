@@ -3,14 +3,14 @@
     android:color="?attr/colorControlHighlight">
 
     <item>
-        <shape>
-            <solid android:color="@color/white" />
+        <shape android:tint="?attr/backgroundColor">
+            <solid android:color="?attr/backgroundColor" />
         </shape>
     </item>
 
     <item android:id="@android:id/mask">
         <shape>
-            <solid android:color="@color/white" />
+            <solid android:color="?attr/backgroundColor" />
         </shape>
     </item>
 

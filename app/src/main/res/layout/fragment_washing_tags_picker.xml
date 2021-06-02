@@ -13,13 +13,12 @@
 
     <TextView
         style="@style/TextView.Title"
-        android:textColor="@color/gray.light"
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
 
-        android:text="Choose washing tags" />
+        android:text="@string/chooseWashingTags" />
 
 
     <androidx.recyclerview.widget.RecyclerView
