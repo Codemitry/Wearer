@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "171270191138",
+    "firebase_url": "https://wearer-7b20e-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "wearer-7b20e",
+    "storage_bucket": "wearer-7b20e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171270191138:android:6e7bfb871eb79e3f71f27b",
+        "android_client_info": {
+          "package_name": "com.codemitry.wearer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171270191138-50nda5j5e1aa7os942cbqfm5hcs6egvj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codemitry.wearer",
+            "certificate_hash": "2729dd5dc5fa3550687f820d729a614db260a490"
+          }
+        },
+        {
+          "client_id": "171270191138-b1tddeasorto5uhq1t2hn28abr7n59o7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codemitry.wearer",
+            "certificate_hash": "a5d0569b9eca53f1c37316d9b626c016ae5ef325"
+          }
+        },
+        {
+          "client_id": "171270191138-3n1sjv345ue9rck8miufa5t9ufg6qp5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq-4tyrkZHl2H2SCT0oo0ziSFmB08RjNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171270191138-3n1sjv345ue9rck8miufa5t9ufg6qp5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

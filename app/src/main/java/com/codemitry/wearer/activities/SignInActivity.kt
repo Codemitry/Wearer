@@ -62,7 +62,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.SignInView {
 
     override fun startGoogleSignInFlow() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken(getString(R.string.default_web_client_id)) // WTF? R.string.default_web_client_id not found
             .requestEmail()
             .build()
         val googleSignInClient = GoogleSignIn.getClient(this, gso)
