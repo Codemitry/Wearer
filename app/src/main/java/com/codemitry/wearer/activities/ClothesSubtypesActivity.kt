@@ -18,8 +18,10 @@ import com.codemitry.wearer.fragments.ClothesSubtypesBottomFragment
 import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.models.ClothesTypesByWearingWay
 import com.codemitry.wearer.mvp.contracts.clothessubtypes.ClothesSubtypesContract
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
+
 
 class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.View,
     RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
@@ -136,4 +138,25 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
         presenter.onAskDeleteClothesItem(position)
     }
 
+    // to disable scrolling when all items are visible on a screen, and scroll is not needed
+    override fun updateToolbarBehaviour() {
+        binding.clothesTypesList.addOnLayoutChangeListener { view, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+            if (bottom != oldBottom) {
+                setToolbarScrollingEnabled(view.canScrollVertically(1) || view.canScrollVertically(-1))
+            }
+        }
+    }
+
+    override fun setToolbarScrollingEnabled(enabled: Boolean) {
+        binding.toolbarLayout.let { toolbar ->
+
+            toolbar.layoutParams = (toolbar.layoutParams as AppBarLayout.LayoutParams).apply {
+                scrollFlags = if (enabled)
+                    AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED
+                else
+                    AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
+            }
+        }
+
+    }
 }

@@ -15,6 +15,9 @@ abstract class ClothesSubtypesContract {
         fun showMyClothesActivity(clothesType: ClothesSubtype)
 
         fun showErrorLoading()
+
+        fun setToolbarScrollingEnabled(enabled: Boolean)
+        fun updateToolbarBehaviour()
     }
 
     interface Presenter : BaseContract.BasePresenter<View>, OnClothesTypeAddClickListener {

@@ -19,6 +19,8 @@ class ClothesSubtypesPresenter @Inject constructor(
 
         view.showClothesType(clothesType)
         view.showClothesTypes(userClothesTypes)
+
+        view.updateToolbarBehaviour()
     }
 
     init {
@@ -28,6 +30,7 @@ class ClothesSubtypesPresenter @Inject constructor(
                 userClothesTypes.addAll(clothesSubtypes)
 
                 view?.showClothesTypes(userClothesTypes)
+                view?.updateToolbarBehaviour()
             }
 
             override fun onFailure() {
@@ -74,6 +77,7 @@ class ClothesSubtypesPresenter @Inject constructor(
                 object : ActionCompleteListener {
                     override fun onSuccess() {
                         userClothesTypes.remove(item)
+                        view?.updateToolbarBehaviour()
                     }
                 })
     }
@@ -81,6 +85,7 @@ class ClothesSubtypesPresenter @Inject constructor(
     override fun onItemDeletingNegativeAnswer(item: ClothesSubtype, position: Int) {
         userClothesTypes.add(position, item)
         view?.addClothesType(item, position)
+        view?.updateToolbarBehaviour()
 
     }
 
@@ -97,6 +102,7 @@ class ClothesSubtypesPresenter @Inject constructor(
                 override fun onSuccess() {
                     userClothesTypes.add(clothesType)
                     view?.addClothesType(clothesType, userClothesTypes.lastIndex)
+                    view?.updateToolbarBehaviour()
                 }
 
                 override fun onFailure() {
