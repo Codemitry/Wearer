@@ -52,21 +52,21 @@ object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContrac
     ) {
 
         userRef.child(clothingItemsName)
-            .child(clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault()))
-            .child(clothesSubtype.toString().toLowerCase(Locale.getDefault()))
+            .child(clothesTypeByWearingWay.name.lowercase(Locale.getDefault()))
+            .child(clothesSubtype.toString().lowercase(Locale.getDefault()))
             .removeValue()
 
         val subtypesRef =
             userStorageRef.child(
-                clothesTypeByWearingWay.toString().toLowerCase(Locale.getDefault())
+                clothesTypeByWearingWay.toString().lowercase(Locale.getDefault())
             )
-                .child(clothesSubtype.toString().toLowerCase(Locale.getDefault()))
+                .child(clothesSubtype.toString().lowercase(Locale.getDefault()))
 
         deleteFolderContent(subtypesRef)
 
         userRef.child(clothesSubtypesName).child(
-            clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault())
-        ).child(clothesSubtype.toString().toLowerCase(Locale.getDefault())).removeValue()
+            clothesTypeByWearingWay.name.lowercase(Locale.getDefault())
+        ).child(clothesSubtype.toString().lowercase(Locale.getDefault())).removeValue()
             .addOnSuccessListener { completeListener?.onSuccess() }
             .addOnFailureListener { completeListener?.onFailure() }
     }
@@ -77,7 +77,7 @@ object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContrac
         completeListener: ActionCompleteListener? = null
     ) {
         userRef.child(clothesSubtypesName)
-            .child(clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault())).get()
+            .child(clothesTypeByWearingWay.name.lowercase(Locale.getDefault())).get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val clothesSubtypes = mutableListOf<ClothesSubtype>()
@@ -103,8 +103,8 @@ object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContrac
         completeListener: ActionCompleteListener? = null
     ) {
         userRef.child(clothesSubtypesName).child(
-            clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault())
-        ).child(clothesSubtype.toString().toLowerCase(Locale.getDefault())).setValue(true)
+            clothesTypeByWearingWay.name.lowercase(Locale.getDefault())
+        ).child(clothesSubtype.toString().lowercase(Locale.getDefault())).setValue(true)
             .addOnSuccessListener { completeListener?.onSuccess() }
             .addOnFailureListener { completeListener?.onFailure() }
     }
@@ -142,10 +142,10 @@ object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContrac
     ) {
         val photoRef =
             userStorageRef.child(
-                clothesTypeByWearingWay.toString().toLowerCase(Locale.getDefault())
+                clothesTypeByWearingWay.toString().lowercase(Locale.getDefault())
             )
-                .child(clothesSubtype.toString().toLowerCase(Locale.getDefault()))
-                .child(clothingItemName.toLowerCase(Locale.getDefault()))
+                .child(clothesSubtype.toString().lowercase(Locale.getDefault()))
+                .child(clothingItemName.lowercase(Locale.getDefault()))
 
         photoRef.putBytes(photoBytes)
             .continueWithTask { task ->
@@ -174,8 +174,8 @@ object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContrac
         completeListener: ActionCompleteListener?
     ) {
         userRef.child(clothingItemsName)
-            .child(clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault()))
-            .child(clothesSubtype.toString().toLowerCase(Locale.getDefault()))
+            .child(clothesTypeByWearingWay.name.lowercase(Locale.getDefault()))
+            .child(clothesSubtype.toString().lowercase(Locale.getDefault()))
             .child(clothingItem.name)
             .setValue(clothingItem)
             .addOnSuccessListener { completeListener?.onSuccess() }
@@ -190,16 +190,16 @@ object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContrac
     ) {
         if (clothingItem.photoUrl != null) {
             userStorageRef.child(
-                clothesTypeByWearingWay.toString().toLowerCase(Locale.getDefault())
+                clothesTypeByWearingWay.toString().lowercase(Locale.getDefault())
             )
-                .child(clothesSubtype.toString().toLowerCase(Locale.getDefault()))
+                .child(clothesSubtype.toString().lowercase(Locale.getDefault()))
                 .child(clothingItem.name)
                 .delete()
 
         }
         userRef.child(clothingItemsName)
-            .child(clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault()))
-            .child(clothesSubtype.toString().toLowerCase(Locale.getDefault()))
+            .child(clothesTypeByWearingWay.name.lowercase(Locale.getDefault()))
+            .child(clothesSubtype.toString().lowercase(Locale.getDefault()))
             .child(clothingItem.name)
             .removeValue()
             .addOnSuccessListener { completeListener?.onSuccess() }
@@ -213,8 +213,8 @@ object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContrac
     ) {
 
         userRef.child(clothingItemsName)
-            .child(clothesTypeByWearingWay.name.toLowerCase(Locale.getDefault()))
-            .child(clothesSubtype.toString().toLowerCase(Locale.getDefault())).get()
+            .child(clothesTypeByWearingWay.name.lowercase(Locale.getDefault()))
+            .child(clothesSubtype.toString().lowercase(Locale.getDefault())).get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val clothingItems = mutableListOf<ClothingItem>()
@@ -225,7 +225,7 @@ object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContrac
                         for (caringLabel in clothingItemSnapshot.child("caringLabels").children) {
                             caringLabels.add(
                                 CaringLabels.valueOf(
-                                    caringLabel.value.toString().toUpperCase(Locale.getDefault())
+                                    caringLabel.value.toString().uppercase(Locale.getDefault())
                                 )
                             )
                         }
