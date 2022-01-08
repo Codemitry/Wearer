@@ -40,7 +40,7 @@ class SplashActivity : AppCompatActivity(), SplashContract.SplashView {
     }
 
     override fun showWearerActivity() {
-        ClothesTypesByWearingWayActivity.start(this)
+        MainMenuActivity.start(this)
         finish()
     }
 

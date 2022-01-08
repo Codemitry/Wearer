@@ -31,7 +31,7 @@ class SignInActivity : AppCompatActivity(), SignInContract.SignInView {
     }
 
     override fun showMainActivity() {
-        ClothesTypesByWearingWayActivity.start(this)
+        MainMenuActivity.start(this)
         finish()
     }
 
