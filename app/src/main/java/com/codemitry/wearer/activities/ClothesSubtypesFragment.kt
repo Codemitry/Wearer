@@ -1,19 +1,17 @@
 package com.codemitry.wearer.activities
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.content.ContextCompat
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.codemitry.wearer.ComponentsProvider
 import com.codemitry.wearer.R
 import com.codemitry.wearer.clothessubtypes.ClothesSubtypeItemSwipedAdapter
 import com.codemitry.wearer.clothessubtypes.RecyclerItemTouchHelper
-import com.codemitry.wearer.databinding.ActivityClothesSubtypesBinding
+import com.codemitry.wearer.databinding.FragmentClothesSubtypesBinding
 import com.codemitry.wearer.fragments.ClothesSubtypesBottomFragment
 import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.models.ClothesTypesByWearingWay
@@ -22,35 +20,43 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
-
-class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.View,
+class ClothesSubtypesFragment(val clothesType: ClothesTypesByWearingWay) : Fragment(), ClothesSubtypesContract.View,
     RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
-    private lateinit var binding: ActivityClothesSubtypesBinding
+    private var _binding: FragmentClothesSubtypesBinding? = null
+    // This property is only valid between onCreateView and onDestroyView.
+    private val binding get() = _binding!!
 
     private lateinit var clothesTypesAdapter: ClothesSubtypeItemSwipedAdapter
 
     @Inject
     lateinit var presenter: ClothesSubtypesContract.Presenter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        require((application as ComponentsProvider).clothesSubtypesComponentBuilder != null)
-        (application as ComponentsProvider).clothesSubtypesComponentBuilder?.build()?.inject(this)
-        binding = ActivityClothesSubtypesBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentClothesSubtypesBinding.inflate(inflater, container, false)
+        require((requireActivity().application as ComponentsProvider).clothesSubtypesComponentBuilder != null)
+        (requireActivity().application as ComponentsProvider).clothesSubtypesComponentBuilder!!.build().inject(this)
 
         binding.addClothesSubtype.setOnClickListener { presenter.onClothesTypesAddClicked() }
 
-        val itemTouchHelperCallback = RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this)
-        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.clothesTypesList)
+        ItemTouchHelper(RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this)).attachToRecyclerView(binding.clothesTypesList)
+
+        return binding.root
     }
+
 
     override fun onStart() {
         super.onStart()
 
         presenter.onViewAttached(this)
+
     }
+
 
     override fun onStop() {
         super.onStop()
@@ -58,31 +64,20 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
         presenter.onViewDetached()
     }
 
-    companion object {
-        const val SHARED_IMAGE_NAME = "clothesSubtypeImage"
-        fun start(from: Activity, clothesType: ClothesTypesByWearingWay, transitionView: View) {
-            val intent = Intent(from, ClothesSubtypesActivity::class.java)
-            intent.putExtra(ClothesTypesByWearingWay::class.simpleName, clothesType)
-
-            val options: ActivityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                from,
-                transitionView,
-                SHARED_IMAGE_NAME
-            )
-
-            ContextCompat.startActivity(from, intent, options.toBundle())
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
+
 
     override fun showClothesType(clothesType: ClothesTypesByWearingWay) {
         binding.toolbar.title = getString(clothesType.nameResource)
         binding.headerImage.setImageResource(clothesType.iconResource)
     }
 
-
     override fun showPossibleClothesTypes(clothes: List<ClothesSubtype>) {
         val bottomFragment = ClothesSubtypesBottomFragment(presenter)
-        bottomFragment.show(supportFragmentManager, ClothesSubtypesBottomFragment::class.simpleName)
+        bottomFragment.show(parentFragmentManager, ClothesSubtypesBottomFragment::class.simpleName)
         bottomFragment.showClothesTypes(clothes)
     }
 
@@ -94,8 +89,8 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
     }
 
     override fun addClothesType(clothesType: ClothesSubtype, position: Int) {
-        if (supportFragmentManager.fragments.isNotEmpty()) {
-            val openedFragment = supportFragmentManager.fragments.last()
+        if (parentFragmentManager.fragments.isNotEmpty()) {
+            val openedFragment = parentFragmentManager.fragments.last()
             if (openedFragment is ClothesSubtypesBottomFragment)
                 openedFragment.dismiss()
         }
@@ -126,8 +121,8 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
     }
 
     override fun showMyClothesActivity(clothesType: ClothesSubtype) {
-        (application as ComponentsProvider).clothesSubtype = clothesType
-        MyClothesActivity.start(this)
+        (requireActivity().application as ComponentsProvider).clothesSubtype = clothesType
+        MyClothesActivity.start(requireContext())
     }
 
     override fun showErrorLoading() {
@@ -159,4 +154,5 @@ class ClothesSubtypesActivity : AppCompatActivity(), ClothesSubtypesContract.Vie
         }
 
     }
+
 }

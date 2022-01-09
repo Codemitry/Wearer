@@ -36,9 +36,6 @@
             android:name=".activities.ClothingItemActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.ClothesSubtypesActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
