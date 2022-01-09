@@ -114,4 +114,7 @@
     <string name="chooseWashingTags">Choose caring labels</string>
 
     <!--    -->
+
+
+    <string name="clothingTypeTransition" translatable="false">clothingTypeTransition</string>
 </resources>

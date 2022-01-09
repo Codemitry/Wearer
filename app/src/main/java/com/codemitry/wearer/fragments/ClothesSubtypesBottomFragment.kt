@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.codemitry.wearer.clothessubtypes.ClothesSubtypeItemAdapter
-import com.codemitry.wearer.databinding.FragmentClothesSubtypesBinding
+import com.codemitry.wearer.databinding.FragmentPopupClothesSubtypesBinding
 import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.mvp.contracts.clothessubtypes.ClothesSubtypesContract
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -15,7 +15,7 @@ class ClothesSubtypesBottomFragment(private val onClothesTypeAddClickListener: C
 
     private lateinit var listAdapter: ClothesSubtypeItemAdapter
 
-    private var _binding: FragmentClothesSubtypesBinding? = null
+    private var _binding: FragmentPopupClothesSubtypesBinding? = null
 
     // This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
@@ -25,7 +25,7 @@ class ClothesSubtypesBottomFragment(private val onClothesTypeAddClickListener: C
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentClothesSubtypesBinding.inflate(inflater, container, false)
+        _binding = FragmentPopupClothesSubtypesBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
