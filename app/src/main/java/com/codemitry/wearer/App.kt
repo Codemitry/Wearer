@@ -17,6 +17,10 @@ class App : Application(), ComponentsProvider {
         SplashComponentBuilderImpl()
     }
 
+    override val accountComponentBuilder: AccountComponentBuilder by lazy {
+        AccountComponentBuilderImpl()
+    }
+
     override var clothesSubtypesComponentBuilder: ClothesSubtypesComponentBuilder? = null
 
     override var clothesType: ClothesTypesByWearingWay? = null

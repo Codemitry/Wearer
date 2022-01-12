@@ -8,11 +8,15 @@ interface ComponentsProvider {
     val signInComponentBuilder: SignInComponentBuilder
     val splashComponentBuilder: SplashComponentBuilder
 
+    val accountComponentBuilder: AccountComponentBuilder
+
     var clothesSubtypesComponentBuilder: ClothesSubtypesComponentBuilder?
 
     var clothingItemsComponentBuilder: ClothingItemsComponentBuilder?
     var addClothingItemComponentBuilder: AddClothingItemComponentBuilder?
 
+
     var clothesType: ClothesTypesByWearingWay?
     var clothesSubtype: ClothesSubtype?
+
 }
