@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_menu_bottom_nav_graph"
+    app:startDestination="@id/bottom_menu_cloakroom">
+
+    <fragment
+        android:id="@+id/bottom_menu_account"
+        android:name="com.codemitry.wearer.activities.AccountFragment"
+        android:label="AccountFragment" />
+
+    <fragment
+        android:id="@+id/bottom_menu_cloakroom"
+        android:name="com.codemitry.wearer.activities.ClothesTypesMenuFragment"
+        android:label="fragment_clothes_types_menu"
+        tools:layout="@layout/fragment_clothes_types_menu" >
+        <action
+            android:id="@+id/action_bottom_menu_cloakroom_to_clothesSubtypesFragment"
+            app:destination="@id/clothesSubtypesFragment"
+            >
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/clothesSubtypesFragment"
+        android:name="com.codemitry.wearer.activities.ClothesSubtypesFragment"
+        android:label="fragment_clothes_subtypes"
+        tools:layout="@layout/fragment_clothes_subtypes" >
+        <argument
+            android:name="clothesType"
+            app:argType="com.codemitry.wearer.models.ClothesTypesByWearingWay" />
+    </fragment>
+    <dialog
+        android:id="@+id/clothesSubtypesBottomFragment"
+        android:name="com.codemitry.wearer.fragments.ClothesSubtypesBottomFragment"
+        android:label="fragment_popup_clothes_subtypes"
+        tools:layout="@layout/fragment_popup_clothes_subtypes" />
+</navigation>
