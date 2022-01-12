@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionInflater
@@ -30,11 +29,6 @@ class ClothesSubtypesFragment : Fragment(), ClothesSubtypesContract.View,
     private val binding get() = _binding!!
 
     private lateinit var clothesTypesAdapter: ClothesSubtypeItemSwipedAdapter
-
-    // navigation passed argument
-    private val args: ClothesSubtypesFragmentArgs by navArgs()
-    val clothesType: ClothesTypesByWearingWay
-        get() = args.clothesType
 
     @Inject
     lateinit var presenter: ClothesSubtypesContract.Presenter

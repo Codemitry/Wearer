@@ -3,13 +3,8 @@ package com.codemitry.wearer.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.codemitry.wearer.R
@@ -28,7 +23,7 @@ class MainMenuActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(
             binding.bottomMenu,
-            (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
+            (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController,
             )
     }
 

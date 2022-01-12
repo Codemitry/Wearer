@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import com.codemitry.wearer.ComponentsProvider
 import com.codemitry.wearer.R
 import com.codemitry.wearer.databinding.FragmentClothesTypesMenuBinding
@@ -90,8 +90,7 @@ class ClothesTypesMenuFragment : Fragment(), View.OnClickListener {
 
         val sharedTransitionExtras = FragmentNavigatorExtras(transitionView to getString(R.string.clothingTypeTransition))
 
-        val action = ClothesTypesMenuFragmentDirections.actionBottomMenuCloakroomToClothesSubtypesFragment(clothesType)
-            requireActivity().findNavController(R.id.nav_host_fragment).navigate(action, sharedTransitionExtras)
+        findNavController().navigate(ClothesTypesMenuFragmentDirections.actionClothesTypesMenuFragmentToClothesSubtypesFragment2(), sharedTransitionExtras)
 
     }
 }
