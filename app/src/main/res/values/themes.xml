@@ -98,5 +98,9 @@
         <item name="android:textColor">?attr/textColorPrimary</item>
     </style>
 
+    <style name="BottomNavigation" parent="Widget.Design.BottomNavigationView">
+        <item name="colorPrimary">?attr/colorPrimaryVariant</item>
+    </style>
+
 
 </resources>
