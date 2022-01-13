@@ -21,11 +21,11 @@
         />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:theme="@style/BottomNavigation"
         android:id="@+id/bottom_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:theme="@style/BottomNavigation"
 
         app:menu="@menu/bottom_menu"
 
