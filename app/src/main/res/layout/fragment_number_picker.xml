@@ -28,24 +28,28 @@
 
     <Button
         android:id="@+id/ok"
-        style="@style/Button.Confirm"
-        android:layout_width="match_parent"
+        style="@style/Button.Outlined.Confirm"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="@string/confirm"
+        android:layout_below="@id/numberPicker"
 
-        android:layout_below="@id/numberPicker" />
+        android:layout_centerHorizontal="true"
+
+        android:text="@string/confirm" />
 
     <Button
         android:id="@+id/cancel"
-        style="@style/Button.Cancel"
-        android:layout_width="match_parent"
+        style="@style/Button.Text.Cancel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="10dp"
-        android:text="@string/cancel"
+        android:layout_centerHorizontal="true"
 
-        android:layout_below="@id/ok" />
+        android:layout_below="@id/ok"
+        android:layout_marginTop="10dp"
+
+        android:text="@string/cancel" />
 
 
 </RelativeLayout>

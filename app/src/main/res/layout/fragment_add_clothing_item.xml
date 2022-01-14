@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+    android:theme="@style/Theme.Wearer"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -162,7 +163,7 @@
 
                 android:background="?android:attr/selectableItemBackground"
                 android:src="@drawable/ic_baseline_add_24"
-                android:tint="?attr/textColorSecondary"
+                app:tint="?attr/textColorSecondary"
 
                 android:layout_marginStart="10dp"
                 android:layout_gravity="end|center_vertical" />
@@ -198,7 +199,7 @@
                 android:layout_height="wrap_content"
 
                 android:background="?android:attr/selectableItemBackground"
-                android:tint="@color/white"
+                app:tint="?backgroundColor"
 
                 android:layout_margin="5dp"
 
@@ -210,20 +211,25 @@
 
 
         <Button
-            style="@style/Button.Confirm"
+            style="@style/Button.Outlined.Confirm"
             android:id="@+id/addClothingItem"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
 
             android:text="@string/addClothingItemButton"
 
             android:layout_marginTop="20dp" />
 
         <Button
-            style="@style/Button.Cancel"
+            style="@style/Button.Text.Cancel"
             android:id="@+id/cancelAddingClothingItem"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
 
             android:text="@string/cancelAddingClothingItemButton" />
 

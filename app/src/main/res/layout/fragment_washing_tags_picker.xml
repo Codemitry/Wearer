@@ -34,19 +34,26 @@
         tools:listitem="@layout/checkable_tag" />
 
     <Button
-        style="@style/Button.Confirm"
+        style="@style/Button.Outlined.Confirm"
         android:id="@+id/confirm"
         android:text="@string/confirm"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp" />
 
     <Button
         android:id="@+id/cancel"
-        style="@style/Button.Cancel"
+        style="@style/Button.Text.Cancel"
         android:text="@string/cancel"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+
+
         android:layout_marginTop="10dp" />
 
 

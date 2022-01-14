@@ -48,18 +48,29 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="Button.Confirm">
-        <item name="android:paddingTop">15dp</item>
-        <item name="android:paddingBottom">15dp</item>
-        <item name="android:layout_marginStart">10dp</item>
-        <item name="android:layout_marginEnd">10dp</item>
-        <item name="android:backgroundTint">@color/blue</item>
+    <style name="Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">?textColorPrimary</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="Button.Cancel">
-        <item name="android:layout_marginStart">10dp</item>
-        <item name="android:layout_marginEnd">10dp</item>
-        <item name="android:backgroundTint">@color/light</item>
+    <style name="Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">?textColorPrimary</item>
+        <item name="strokeColor">?colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Button.Outlined.Confirm">
+        <item name="android:paddingStart">60dp</item>
+        <item name="android:paddingEnd">60dp</item>
+
+        <item name="strokeColor">?colorPrimary</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="cornerRadius">10dp</item>
+    </style>
+
+    <style name="Button.Text.Cancel">
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
     </style>
 
     <style name="TextButton" parent="Widget.MaterialComponents.Button.TextButton">
