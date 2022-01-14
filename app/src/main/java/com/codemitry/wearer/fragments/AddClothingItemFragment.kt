@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
+import com.bumptech.glide.Glide
 import com.codemitry.wearer.R
 import com.codemitry.wearer.databinding.FragmentAddClothingItemBinding
 import com.codemitry.wearer.models.CaringLabels
@@ -22,6 +23,7 @@ import com.codemitry.wearer.models.ClothingItem
 import com.codemitry.wearer.mvp.contracts.addclothingitem.AddClothingItemContract
 import com.codemitry.wearer.tagspicker.WashingTagsAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.stfalcon.imageviewer.StfalconImageViewer
 import java.io.ByteArrayOutputStream
 import java.io.File
 import javax.inject.Inject
@@ -71,10 +73,13 @@ class AddClothingItemFragment(private val onItemAdded: ((clothingItem: ClothingI
 
         binding.addPhoto.setOnClickListener {
             AlertDialog.Builder(requireContext())
-                    .setItems(arrayOf(getString(R.string.takePhoto), getString(R.string.pickFromGallery))) { dialog, which ->
+                    .setItems(arrayOf(getString(R.string.takePhoto), getString(R.string.pickFromGallery)).run {
+                        if (clothingItemPhoto != null) this.plus(getString(R.string.openSelectedPhoto)) else this }
+                    ) { dialog, which ->
                         when (which) {
                             0 -> takePhoto()
                             1 -> choosePhotoFromGallery()
+                            2 -> openSelectedPhoto()
                             else -> dismiss()
                         }
                     }
@@ -163,6 +168,14 @@ class AddClothingItemFragment(private val onItemAdded: ((clothingItem: ClothingI
     override fun choosePhotoFromGallery() {
         val pickPhoto = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(pickPhoto, PICK_PHOTO_RC)
+    }
+
+    override fun openSelectedPhoto() {
+        StfalconImageViewer.Builder(requireContext(), listOf(clothingItemPhoto)) { view, image ->
+            Glide.with(this)
+                .load(image)
+                .into(view)
+        }.withTransitionFrom(binding.addPhoto).show()
     }
 
     override fun deleteImage() {

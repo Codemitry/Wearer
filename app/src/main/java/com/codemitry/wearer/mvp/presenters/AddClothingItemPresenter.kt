@@ -47,8 +47,8 @@ class AddClothingItemPresenter @Inject constructor(
     }
 
     override fun onCaringLabelRemoveClick(caringLabel: CaringLabels) {
-        selectedCaringLabels.remove(caringLabel)
         view?.removeCaringLabel(caringLabel)
+        selectedCaringLabels.remove(caringLabel)
     }
 
     override fun onTakePhotoClick() {

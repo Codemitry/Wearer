@@ -108,6 +108,8 @@
 
     <string name="takePhoto">Сделать фото</string>
     <string name="pickFromGallery">Выбрать из галереи</string>
+    <string name="openSelectedPhoto">Открыть выбранное фото</string>
+
 
     <string name="caringLabels">Бирки по уходу</string>
     <string name="clothingItemNameMustNotBeEmpty">Название элемента одежды не должно быть пустым!</string>

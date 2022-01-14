@@ -13,6 +13,7 @@ import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.models.ClothingItem
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import com.stfalcon.imageviewer.StfalconImageViewer
 
 class ClothingItemActivity : AppCompatActivity() {
 
@@ -68,14 +69,24 @@ class ClothingItemActivity : AppCompatActivity() {
             binding.photo.visibility = View.GONE
         }
 
-        clothingItem.photoUrl?.let {
+        clothingItem.photoUrl?.let { photoUrl ->
+
             Glide.with(this)
-                .load(Firebase.storage.getReferenceFromUrl(it))
+                .load(Firebase.storage.getReferenceFromUrl(photoUrl))
                 .into(binding.photo)
 
+
+            binding.photo.setOnClickListener {
+                StfalconImageViewer.Builder(this, listOf(photoUrl)) { view, image ->
+                    Glide.with(this)
+                        .load(Firebase.storage.getReferenceFromUrl(image))
+                        .into(view)
+                }.withTransitionFrom(binding.photo).show()
+            }
         }
 
         binding.close.setOnClickListener { finish() }
+
     }
 
     companion object {

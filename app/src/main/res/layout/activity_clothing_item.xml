@@ -150,7 +150,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
             >
 
             <HorizontalScrollView
@@ -197,7 +196,7 @@
 
             android:layout_gravity="center_horizontal"
 
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/close" />
 
     </LinearLayout>

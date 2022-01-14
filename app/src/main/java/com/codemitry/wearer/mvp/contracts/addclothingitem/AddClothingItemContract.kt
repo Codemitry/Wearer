@@ -17,6 +17,7 @@ abstract class AddClothingItemContract {
 
         fun takePhoto()
         fun choosePhotoFromGallery()
+        fun openSelectedPhoto()
 
         fun deleteImage()
 

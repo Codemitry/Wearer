@@ -76,6 +76,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
 
+    implementation("com.github.stfalcon-studio:StfalconImageViewer:v1.0.1")
+
     // google services to auth
     implementation 'com.google.android.gms:play-services-auth:20.0.0'
 
