@@ -30,12 +30,18 @@ class MyClothesPresenter @Inject constructor(
                 myClothes.addAll(clothingItems)
 
                 view.showMyClothes(myClothes)
+
+                view.updateToolbarBehaviour()
             }
 
             override fun onFailure() {
                 view.showErrorLoading()
+
+                view.updateToolbarBehaviour()
             }
         })
+
+        view.updateToolbarBehaviour()
     }
 
     override fun onClothingItemAdded(clothingItem: ClothingItem) {
@@ -61,6 +67,8 @@ class MyClothesPresenter @Inject constructor(
     override fun onItemDeletingNegativeAnswer(clothingItem: ClothingItem, position: Int) {
         myClothes.add(position, clothingItem)
         view?.showAddedClothingItem(clothingItem, position)
+
+        view?.updateToolbarBehaviour()
     }
 
     override fun onItemDeletingPositiveAnswer(clothingItem: ClothingItem, position: Int) {
@@ -71,6 +79,7 @@ class MyClothesPresenter @Inject constructor(
             object : ActionCompleteListener {
                 override fun onSuccess() {
                     myClothes.remove(clothingItem)
+                    view?.updateToolbarBehaviour()
                 }
             })
     }

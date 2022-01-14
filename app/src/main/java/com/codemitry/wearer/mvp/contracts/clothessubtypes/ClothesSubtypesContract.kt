@@ -3,10 +3,11 @@ package com.codemitry.wearer.mvp.contracts.clothessubtypes
 import com.codemitry.wearer.db.ActionCompleteListener
 import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.models.ClothesTypesByWearingWay
+import com.codemitry.wearer.mvp.contracts.CollapsingToolbarWithListView
 import com.codemitry.wearer.mvp.contracts.base.BaseContract
 
 abstract class ClothesSubtypesContract {
-    interface View : BaseContract.BaseView {
+    interface View : BaseContract.BaseView, CollapsingToolbarWithListView {
         fun showClothesType(clothesType: ClothesTypesByWearingWay)
         fun showPossibleClothesTypes(clothes: List<ClothesSubtype>)
         fun showClothesTypes(clothes: List<ClothesSubtype>)
@@ -15,9 +16,6 @@ abstract class ClothesSubtypesContract {
         fun showMyClothesActivity(clothesType: ClothesSubtype)
 
         fun showErrorLoading()
-
-        fun setToolbarScrollingEnabled(enabled: Boolean)
-        fun updateToolbarBehaviour()
     }
 
     interface Presenter : BaseContract.BasePresenter<View>, OnClothesTypeAddClickListener {

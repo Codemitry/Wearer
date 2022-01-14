@@ -4,10 +4,11 @@ import com.codemitry.wearer.db.ActionCompleteListener
 import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.models.ClothesTypesByWearingWay
 import com.codemitry.wearer.models.ClothingItem
+import com.codemitry.wearer.mvp.contracts.CollapsingToolbarWithListView
 import com.codemitry.wearer.mvp.contracts.base.BaseContract
 
 abstract class MyClothesContract {
-    interface View : BaseContract.BaseView {
+    interface View : BaseContract.BaseView, CollapsingToolbarWithListView {
         fun showAddClothesFragment()
         fun showMyClothes(myClothes: List<ClothingItem>)
 

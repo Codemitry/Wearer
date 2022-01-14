@@ -16,6 +16,7 @@ import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.models.ClothingItem
 import com.codemitry.wearer.mvp.contracts.myclothes.MyClothesContract
 import com.codemitry.wearer.myclothes.MyClothesItemSwipedAdapter
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
@@ -28,6 +29,12 @@ class MyClothesActivity : AppCompatActivity(), MyClothesContract.View,
     private lateinit var binding: ActivityMyClothesBinding
 
     private lateinit var myClothesAdapter: MyClothesItemSwipedAdapter
+
+
+    override val toolbarLayout: CollapsingToolbarLayout
+        get() = binding.toolbarLayout
+    override val list: RecyclerView
+        get() = binding.myClothesList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
