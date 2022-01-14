@@ -117,4 +117,5 @@
 
 
     <string name="clothingTypeTransition" translatable="false">clothingTypeTransition</string>
+    <string name="clothingSubtypeTransition" translatable="false">clothingSubtypeTransition</string>
 </resources>

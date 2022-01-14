@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionInflater
@@ -38,6 +41,8 @@ class ClothesSubtypesFragment : Fragment(), ClothesSubtypesContract.View,
     override val list: RecyclerView
         get() = binding.clothesTypesList
 
+    private var transitionView: View? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,11 +58,18 @@ class ClothesSubtypesFragment : Fragment(), ClothesSubtypesContract.View,
         require((requireActivity().application as ComponentsProvider).clothesSubtypesComponentBuilder != null)
         (requireActivity().application as ComponentsProvider).clothesSubtypesComponentBuilder!!.build().inject(this)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        transitionView?.transitionName = getString(R.string.clothingSubtypeTransition)
+
         binding.addClothesSubtype.setOnClickListener { presenter.onClothesTypesAddClicked() }
 
-        ItemTouchHelper(RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this)).attachToRecyclerView(binding.clothesTypesList)
-
-        return binding.root
+        val itemTouchHelperCallback = RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this)
+        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.clothesTypesList)
     }
 
 
@@ -65,7 +77,6 @@ class ClothesSubtypesFragment : Fragment(), ClothesSubtypesContract.View,
         super.onStart()
 
         presenter.onViewAttached(this)
-
     }
 
 
@@ -93,7 +104,12 @@ class ClothesSubtypesFragment : Fragment(), ClothesSubtypesContract.View,
     }
 
     override fun showClothesTypes(clothes: List<ClothesSubtype>) {
-        clothesTypesAdapter = ClothesSubtypeItemSwipedAdapter(clothes) { clothesType ->
+        clothesTypesAdapter = ClothesSubtypeItemSwipedAdapter(clothes) { clothesType, view ->
+
+            transitionView?.transitionName = null
+
+            transitionView = view
+
             presenter.onClothesTypeOpenClick(clothesType)
         }
         binding.clothesTypesList.adapter = clothesTypesAdapter
@@ -133,7 +149,11 @@ class ClothesSubtypesFragment : Fragment(), ClothesSubtypesContract.View,
 
     override fun showMyClothesActivity(clothesType: ClothesSubtype) {
         (requireActivity().application as ComponentsProvider).clothesSubtype = clothesType
-        MyClothesActivity.start(requireContext())
+
+        require(transitionView != null) { "transitionView must not be null when transition!!!" }
+        val sharedTransitionExtras = FragmentNavigatorExtras(transitionView!! to getString(R.string.clothingSubtypeTransition))
+
+        findNavController().navigate(ClothesSubtypesFragmentDirections.actionClothesSubtypesFragment2ToMyClothesFragment2(), sharedTransitionExtras)
     }
 
     override fun showErrorLoading() {

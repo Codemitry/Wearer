@@ -30,9 +30,6 @@
         </provider>
 
         <activity
-            android:name=".activities.MyClothesActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.ClothingItemActivity"
             android:screenOrientation="portrait" />
         <activity

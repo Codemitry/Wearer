@@ -7,7 +7,7 @@
 
     android:background="?backgroundColor"
 
-    tools:context=".activities.MyClothesActivity">
+    tools:context=".activities.MyClothesFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -39,7 +39,7 @@
                 android:src="@drawable/overcoat"
 
                 android:background="?attr/colorPrimary"
-                android:transitionName="clothesSubtypeImage" />
+                android:transitionName="@string/clothingSubtypeTransition" />
 
 
             <com.google.android.material.appbar.MaterialToolbar

@@ -1,16 +1,17 @@
 package com.codemitry.wearer.activities
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.TransitionInflater
 import com.codemitry.wearer.ComponentsProvider
 import com.codemitry.wearer.R
 import com.codemitry.wearer.clothessubtypes.RecyclerItemTouchHelper
-import com.codemitry.wearer.databinding.ActivityMyClothesBinding
+import com.codemitry.wearer.databinding.FragmentMyClothesBinding
 import com.codemitry.wearer.fragments.AddClothingItemFragment
 import com.codemitry.wearer.models.ClothesSubtype
 import com.codemitry.wearer.models.ClothingItem
@@ -20,13 +21,16 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
-class MyClothesActivity : AppCompatActivity(), MyClothesContract.View,
+class MyClothesFragment : Fragment(), MyClothesContract.View,
     RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
 
     @Inject
     lateinit var presenter: MyClothesContract.Presenter
-    private lateinit var binding: ActivityMyClothesBinding
+
+    private var _binding: FragmentMyClothesBinding? = null
+    // This property is only valid between onCreateView and onDestroyView.
+    private val binding get() = _binding!!
 
     private lateinit var myClothesAdapter: MyClothesItemSwipedAdapter
 
@@ -38,11 +42,25 @@ class MyClothesActivity : AppCompatActivity(), MyClothesContract.View,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        require((application as ComponentsProvider).clothingItemsComponentBuilder != null)
-        (application as ComponentsProvider).clothingItemsComponentBuilder!!.build().inject(this)
 
-        binding = ActivityMyClothesBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        sharedElementEnterTransition  = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentMyClothesBinding.inflate(inflater, container, false)
+
+        require((requireActivity().application as ComponentsProvider).clothingItemsComponentBuilder != null)
+        (requireActivity().application as ComponentsProvider).clothingItemsComponentBuilder!!.build().inject(this)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.addMyClothes.setOnClickListener { presenter.onAddClothesClick() }
 
@@ -62,21 +80,20 @@ class MyClothesActivity : AppCompatActivity(), MyClothesContract.View,
         presenter.onViewDetached()
     }
 
-    companion object {
-        fun start(context: Context) {
-            val intent = Intent(context, MyClothesActivity::class.java)
-            ContextCompat.startActivity(context, intent, null)
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
+
 
     override fun showAddClothesFragment() {
         val fragment = AddClothingItemFragment { item ->
             presenter.onClothingItemAdded(item)
         }
-        require((application as ComponentsProvider).addClothingItemComponentBuilder != null)
-        (application as ComponentsProvider).addClothingItemComponentBuilder?.build()
+        require((requireActivity().application as ComponentsProvider).addClothingItemComponentBuilder != null)
+        (requireActivity().application as ComponentsProvider).addClothingItemComponentBuilder?.build()
             ?.inject(fragment)
-        fragment.show(supportFragmentManager, AddClothingItemFragment::class.simpleName)
+        fragment.show(childFragmentManager, AddClothingItemFragment::class.simpleName)
     }
 
     override fun showAddedClothingItem(clothingItem: ClothingItem, position: Int) {
@@ -91,7 +108,7 @@ class MyClothesActivity : AppCompatActivity(), MyClothesContract.View,
     }
 
     override fun showClothingItem(clothingItem: ClothingItem, clothesSubtype: ClothesSubtype) {
-        ClothingItemActivity.start(this, clothingItem, clothesSubtype)
+        ClothingItemActivity.start(requireContext(), clothingItem, clothesSubtype)
     }
 
     override fun showMyClothes(myClothes: List<ClothingItem>) {

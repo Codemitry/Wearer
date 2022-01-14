@@ -12,7 +12,7 @@ import com.codemitry.wearer.mvp.contracts.clothessubtypes.ClothesSubtypesContrac
 
 class ClothesSubtypeItemSwipedAdapter(
         private var clothesTypes: List<ClothesSubtype>,
-        private val onItemClickListener: ClothesSubtypesContract.OnClothesTypeAddClickListener
+        private val onItemClickListener: ClothesSubtypesContract.OnClothesTypeAddClickListenerForFramework
 ) : RecyclerView.Adapter<ClothesSubtypeItemSwipedAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,7 +38,8 @@ class ClothesSubtypeItemSwipedAdapter(
         holder.icon?.setImageResource(clothesTypes[position].iconResource)
 
         holder.itemView.setOnClickListener { view ->
-            onItemClickListener.onAddClothesTypeClick(clothesTypes[position])
+            holder.icon!!.transitionName = view.context.getString(R.string.clothingSubtypeTransition)
+            onItemClickListener.onAddClothesTypeClick(clothesTypes[position], holder.icon!!)
         }
     }
 

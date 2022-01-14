@@ -18,5 +18,14 @@
         android:id="@+id/clothesSubtypesFragment2"
         android:name="com.codemitry.wearer.activities.ClothesSubtypesFragment"
         android:label="fragment_clothes_subtypes"
-        tools:layout="@layout/fragment_clothes_subtypes" />
+        tools:layout="@layout/fragment_clothes_subtypes" >
+        <action
+            android:id="@+id/action_clothesSubtypesFragment2_to_myClothesFragment2"
+            app:destination="@id/myClothesFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/myClothesFragment2"
+        android:name="com.codemitry.wearer.activities.MyClothesFragment"
+        android:label="fragment_my_clothes"
+        tools:layout="@layout/fragment_my_clothes" />
 </navigation>

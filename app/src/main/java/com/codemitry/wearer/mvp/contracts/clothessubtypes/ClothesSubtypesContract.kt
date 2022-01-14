@@ -33,6 +33,10 @@ abstract class ClothesSubtypesContract {
         fun onAddClothesTypeClick(clothesType: ClothesSubtype)
     }
 
+    fun interface OnClothesTypeAddClickListenerForFramework {
+        fun onAddClothesTypeClick(clothesType: ClothesSubtype, view: android.view.View)
+    }
+
     interface ClothesTypesManager {
         fun loadClothesSubtypes(clothesTypeByWearingWay: ClothesTypesByWearingWay, completeListener: ActionCompleteListener)
 
