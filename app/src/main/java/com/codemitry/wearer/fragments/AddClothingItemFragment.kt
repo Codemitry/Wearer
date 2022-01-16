@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
+import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -15,6 +16,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
+import androidx.core.net.toFile
+import androidx.exifinterface.media.ExifInterface
 import com.bumptech.glide.Glide
 import com.codemitry.wearer.R
 import com.codemitry.wearer.databinding.FragmentAddClothingItemBinding
@@ -140,7 +143,18 @@ class AddClothingItemFragment(private val onItemAdded: ((clothingItem: ClothingI
             }
             TAKE_PHOTO_RC -> {
                 if (resultCode == RESULT_OK) {
-                    clothingItemPhoto = BitmapFactory.decodeFile(Uri.parse(clothingItemPhotoPath).path, null)
+                    val photo = BitmapFactory.decodeFile(Uri.parse(clothingItemPhotoPath).path, null)
+                    val ei = ExifInterface(Uri.parse(clothingItemPhotoPath).toFile())
+
+                    val orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_UNDEFINED)
+
+
+                    clothingItemPhoto = photo.rotate(when (orientation) {
+                        ExifInterface.ORIENTATION_ROTATE_90 -> 90f
+                        ExifInterface.ORIENTATION_ROTATE_180 -> 180f
+                        ExifInterface.ORIENTATION_ROTATE_270 -> 270f
+                        else -> 0f
+                    })
 
                     clothingItemPhoto?.let {
                         presenter.onItemClothingPhotoReady(bitmapToBytes(it))
@@ -162,8 +176,17 @@ class AddClothingItemFragment(private val onItemAdded: ((clothingItem: ClothingI
         clothingItemPhotoPath = "file:" + newFile.absolutePath
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, contentUri)
+
+        requireActivity()
         startActivityForResult(intent, TAKE_PHOTO_RC)
     }
+
+    private fun Bitmap.rotate(angle: Float): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(angle)
+        return Bitmap.createBitmap(this, 0, 0, width, height, matrix, true)
+    }
+
 
     override fun choosePhotoFromGallery() {
         val pickPhoto = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)

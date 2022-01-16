@@ -191,7 +191,9 @@
                 android:layout_height="match_parent"
 
                 android:background="?android:attr/selectableItemBackground"
-                android:contentDescription="@string/addPhoto" />
+
+                android:contentDescription="@string/addPhoto"
+                android:scaleType="fitCenter" />
 
             <ImageButton
                 android:id="@+id/deleteImage"
