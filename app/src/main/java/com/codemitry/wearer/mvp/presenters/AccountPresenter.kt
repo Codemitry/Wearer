@@ -28,6 +28,7 @@ class AccountPresenter @Inject constructor(
             { // Yes, delete my account
             deleteAccount(object : ActionCompleteListener {
                 override fun onSuccess() {
+                    signOut()
                     view?.showAccountDeletedSuccessfullyMessage()
                     view?.showSignInActivity()
                 }

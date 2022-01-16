@@ -1,5 +1,6 @@
 package com.codemitry.wearer.mvp.presenters
 
+import com.codemitry.wearer.models.User
 import com.codemitry.wearer.mvp.contracts.signin.SignInContract
 import javax.inject.Inject
 
@@ -10,7 +11,7 @@ class SignInPresenter : SignInContract.SignInPresenter,
     @Inject
     override lateinit var signInInteractor: SignInContract.SignInInteractor
 
-    override fun onSuccess() {
+    override fun onSuccess(user: User) {
         view?.showMainActivity()
     }
 

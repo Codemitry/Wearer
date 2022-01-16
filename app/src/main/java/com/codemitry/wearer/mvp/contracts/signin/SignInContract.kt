@@ -1,5 +1,6 @@
 package com.codemitry.wearer.mvp.contracts.signin
 
+import com.codemitry.wearer.models.User
 import com.codemitry.wearer.mvp.contracts.base.BaseContract
 
 abstract class SignInContract {
@@ -23,7 +24,7 @@ abstract class SignInContract {
 
     interface SignInInteractor {
         interface OnSignInListener {
-            fun onSuccess()
+            fun onSuccess(user: User)
             fun onFailure()
         }
 

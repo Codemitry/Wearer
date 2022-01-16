@@ -2,11 +2,14 @@ package com.codemitry.wearer.mvp.presenters
 
 import android.util.Log
 import com.codemitry.wearer.mvp.contracts.signin.SignInContract
+import com.codemitry.wearer.mvp.usecases.GetUserUseCase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import javax.inject.Inject
 
-class SignInInteractor @Inject constructor() : SignInContract.SignInInteractor {
+class SignInInteractor @Inject constructor(
+    val getUserUseCase: GetUserUseCase
+) : SignInContract.SignInInteractor {
 
     override var onSignInListener: SignInContract.SignInInteractor.OnSignInListener? = null
 
@@ -17,7 +20,7 @@ class SignInInteractor @Inject constructor() : SignInContract.SignInInteractor {
                 if (task.isSuccessful && task.result?.user?.uid != null) {
                     // Sign in success
                     Log.d("Sign in", "signInWithCredential:success")
-                    onSignInListener?.onSuccess()
+                    onSignInListener?.onSuccess(getUserUseCase()!!)
                 } else {
                     // Sign in fails
                     Log.w("Sign in", "signInWithCredential:failure", task.exception)
@@ -32,7 +35,7 @@ class SignInInteractor @Inject constructor() : SignInContract.SignInInteractor {
                 if (task.isSuccessful && task.result?.user?.uid != null) {
                     // Sign in success
                     Log.d("Sign in", "signInAnonymously:success")
-                    onSignInListener?.onSuccess()
+                    onSignInListener?.onSuccess(getUserUseCase()!!)
                 } else {
                     // Sign in fails
                     Log.d("Sign in", "signInAnonymously:failure", task.exception)
