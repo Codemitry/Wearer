@@ -120,6 +120,13 @@
     <string name="signedAnonymously">Анонимная авторизация</string>
     <string name="signedWayUnknown">Неизвестный способ авторизации</string>
 
+    <string name="deleteMyAccount">Удалить мой аккаунт</string>
+
+    <string name="deleteMyAccountConfirmation">Вы уверены, что хотите удалить аккаунт? Это действие необратимо. Все данные, принадлежащие вам, будут безвозвратно стерты!</string>
+
+    <string name="accountDeletedSuccessfully">Аккаунт успешно удален</string>
+    <string name="unableToDeleteAccount">Возникла ошибка, аккаунт не удалось удалить</string>
+
     <!--    -->
 
 

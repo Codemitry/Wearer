@@ -1,8 +1,11 @@
 package com.codemitry.wearer.db
 
 import com.codemitry.wearer.models.*
+import com.codemitry.wearer.mvp.contracts.LoadingIndicatorView
 import com.codemitry.wearer.mvp.contracts.clothessubtypes.ClothesSubtypesContract
 import com.codemitry.wearer.mvp.contracts.myclothes.MyClothesContract
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -249,6 +252,19 @@ object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContrac
                     completeListener?.onFailure()
                 }
             }
+    }
+
+    fun deleteAccount(completeListener: ActionCompleteListener) {
+        val dataDeleteTask = userRef.removeValue()
+
+        userStorageRef.delete().continueWith {
+            if (it.isComplete && !it.isSuccessful) {
+                completeListener.onFailure()
+            }
+
+            dataDeleteTask
+        }.addOnSuccessListener { completeListener.onSuccess() }
+            .addOnFailureListener { completeListener.onFailure() }
     }
 }
 

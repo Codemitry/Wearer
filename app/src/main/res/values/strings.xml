@@ -119,6 +119,14 @@
     <string name="signedAnonymously">Signed anonymously</string>
     <string name="signedWayUnknown">Unknown sign-in way</string>
 
+    <string name="deleteMyAccount">Delete my account</string>
+
+    <string name="deleteMyAccountConfirmation">Are you sure to delete the account? This action is irreversible. All data belonging you, will be erased!</string>
+
+    <string name="accountDeletedSuccessfully">Account deleted successfully</string>
+    <string name="unableToDeleteAccount">An error occurred, the account was not deleted</string>
+
+
     <!--    -->
 
 

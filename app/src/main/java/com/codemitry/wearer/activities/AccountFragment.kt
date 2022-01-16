@@ -10,9 +10,11 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.codemitry.wearer.ComponentsProvider
 import com.codemitry.wearer.R
 import com.codemitry.wearer.databinding.FragmentAccountBinding
+import com.codemitry.wearer.fragments.YesNoDialogFragment
 import com.codemitry.wearer.models.AuthType
 import com.codemitry.wearer.models.ImageResource
 import com.codemitry.wearer.mvp.contracts.account.AccountContract
+import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
 class AccountFragment : Fragment(), AccountContract.View {
@@ -40,6 +42,10 @@ class AccountFragment : Fragment(), AccountContract.View {
 
         binding.signOut.setOnClickListener {
             presenter.onSignOutClick()
+        }
+
+        binding.deleteAccount.setOnClickListener {
+            presenter.onDeleteAccountClick()
         }
     }
 
@@ -88,5 +94,21 @@ class AccountFragment : Fragment(), AccountContract.View {
             AuthType.UNKNOWN -> R.string.signedWayUnknown
         }
         binding.authType.text = getString(authTypeAsResource)
+    }
+
+    override fun showDialogDeleteAccountConfirmation(onConfirm: () -> Unit, onDismiss: () -> Unit) {
+        val dialog = YesNoDialogFragment(onConfirm, onDismiss)
+        dialog.title = getString(R.string.deleteMyAccount)
+        dialog.body = getString(R.string.deleteMyAccountConfirmation)
+
+        dialog.show(childFragmentManager, dialog::class.simpleName)
+    }
+
+    override fun showAccountDeletedSuccessfullyMessage() {
+        Snackbar.make(binding.root, R.string.accountDeletedSuccessfully, Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun showErrorDeletingAccountMessage() {
+        Snackbar.make(binding.root, R.string.unableToDeleteAccount, Snackbar.LENGTH_LONG).show()
     }
 }

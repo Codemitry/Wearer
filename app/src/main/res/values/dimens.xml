@@ -5,10 +5,12 @@
     <dimen name="sheet_text_scrim_height_bottom">150dp</dimen>
 
     <dimen name="clothesSubtypeHeight">60dp</dimen>
-    <dimen name="clothesSubtypeItemCorner">5dp</dimen>
-    <dimen name="clothesSubtypeBottomFragmentCorner">16dp</dimen>
+<!--    <dimen name="clothesSubtypeItemCorner">5dp</dimen>-->
+    <dimen name="clothesSubtypeBottomFragmentCorner">@dimen/dialogFragmentCornerRadius</dimen>
 
     <dimen name="tagSize">45dp</dimen>
     <dimen name="checkableTagSize">50dp</dimen>
     <dimen name="removeTagButtonSize">15dp</dimen>
+
+    <dimen name="dialogFragmentCornerRadius">25dp</dimen>
 </resources>

@@ -53,6 +53,10 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="Button.Text.Dangerous">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+    </style>
+
     <style name="Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:textColor">?textColorPrimary</item>
         <item name="strokeColor">?colorPrimary</item>
