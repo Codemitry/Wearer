@@ -116,6 +116,10 @@
     <string name="close">Закрыть</string>
     <string name="chooseWashingTags">Выберите бирки по уходу</string>
 
+    <string name="signedWithGoogle">Авторизация с Google</string>
+    <string name="signedAnonymously">Анонимная авторизация</string>
+    <string name="signedWayUnknown">Неизвестный способ авторизации</string>
+
     <!--    -->
 
 

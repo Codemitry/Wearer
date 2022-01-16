@@ -114,6 +114,11 @@
 
     <string name="chooseWashingTags">Choose caring labels</string>
 
+
+    <string name="signedWithGoogle">Signed with Google</string>
+    <string name="signedAnonymously">Signed anonymously</string>
+    <string name="signedWayUnknown">Unknown sign-in way</string>
+
     <!--    -->
 
 

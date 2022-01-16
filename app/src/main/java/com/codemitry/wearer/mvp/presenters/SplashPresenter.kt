@@ -12,8 +12,6 @@ class SplashPresenter : SplashContract.SplashPresenter {
 
     override fun onSplashScreenOpened() {
         if (signInChecker.signedIn()) {
-            signInChecker.saveUserId(signInChecker.userId()!!)
-
             view?.showWearerActivity()
         } else {
             view?.showSignInActivity()

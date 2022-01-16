@@ -11,13 +11,13 @@ import com.google.firebase.storage.ktx.storage
 import java.util.*
 
 object DBManager : ClothesSubtypesContract.ClothesTypesManager, MyClothesContract.Interactor {
-    var uid: String? = null
-        set(value) {
-            field = value
-            value?.let { value ->
-                userRef = allUsersRef.child(value); userStorageRef = allUsersStorageRef.child(value)
-            }
+    var user: User? = null
+    set(value) {
+        field = value
+        value?.let {
+            userRef = allUsersRef.child(it.uid); userStorageRef = allUsersStorageRef.child(it.uid)
         }
+    }
 
     private val storage = Firebase.storage
     private val storageRef = storage.reference

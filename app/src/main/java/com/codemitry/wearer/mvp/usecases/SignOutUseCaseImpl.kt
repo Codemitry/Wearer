@@ -5,8 +5,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class SignOutUseCaseImpl : SignOutUseCase {
     override fun invoke() {
+        DBManager.user = null
         FirebaseAuth.getInstance().signOut()
-
-        DBManager.uid = null
     }
 }

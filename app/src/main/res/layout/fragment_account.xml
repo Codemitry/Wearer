@@ -2,21 +2,133 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageButton
-        android:id="@+id/signOut"
-        android:layout_width="wrap_content"
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-
-        android:src="@drawable/ic_baseline_exit_to_app_24"
-        android:background="?android:attr/selectableItemBackground"
-
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
 
-        android:layout_margin="20dp"
-        />
+        android:layout_marginTop="40dp"
+
+        android:layout_marginHorizontal="40dp"
+        app:cardCornerRadius="20dp"
+        android:elevation="10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+
+            android:padding="20dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+
+                android:weightSum="1"
+                >
+                <ImageView
+                    android:id="@+id/userPhoto"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+
+                    android:src="@drawable/ic_baseline_tag_faces_24"
+
+                    />
+
+                <TextView
+                    style="@style/TextView"
+
+                    android:id="@+id/userName"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+
+                    tools:text="Trendy"
+                    />
+
+                <ImageButton
+                    android:id="@+id/signOut"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+
+
+                    android:src="@drawable/ic_baseline_exit_to_app_24"
+                    android:background="?android:attr/selectableItemBackground"
+
+                    android:padding="10dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="20dp"
+                >
+
+                <TextView
+                    style="@style/TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="uid:"
+
+                    android:textColor="?textColorSecondary"
+                    />
+
+                <TextView
+                    android:id="@+id/uid"
+                    style="@style/TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    tools:text="u1212jasjajs121a"
+
+                    android:layout_marginStart="10dp"
+
+                    android:textIsSelectable="true"
+                    android:textColor="?textColorSecondary"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+
+                <TextView
+                    android:id="@+id/authType"
+                    style="@style/TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    tools:text="Signed anonymously"
+
+                    android:textColor="?textColorSecondary"
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

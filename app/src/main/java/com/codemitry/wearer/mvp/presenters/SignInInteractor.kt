@@ -1,7 +1,6 @@
 package com.codemitry.wearer.mvp.presenters
 
 import android.util.Log
-import com.codemitry.wearer.db.DBManager
 import com.codemitry.wearer.mvp.contracts.signin.SignInContract
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
@@ -18,7 +17,6 @@ class SignInInteractor @Inject constructor() : SignInContract.SignInInteractor {
                 if (task.isSuccessful && task.result?.user?.uid != null) {
                     // Sign in success
                     Log.d("Sign in", "signInWithCredential:success")
-                    DBManager.uid = task.result?.user?.uid ?: ""
                     onSignInListener?.onSuccess()
                 } else {
                     // Sign in fails
@@ -34,7 +32,6 @@ class SignInInteractor @Inject constructor() : SignInContract.SignInInteractor {
                 if (task.isSuccessful && task.result?.user?.uid != null) {
                     // Sign in success
                     Log.d("Sign in", "signInAnonymously:success")
-                    DBManager.uid = task.result?.user?.uid ?: ""
                     onSignInListener?.onSuccess()
                 } else {
                     // Sign in fails

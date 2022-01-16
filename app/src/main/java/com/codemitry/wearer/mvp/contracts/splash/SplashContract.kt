@@ -15,8 +15,6 @@ abstract class SplashContract {
 
     interface SignInChecker {
         fun signedIn(): Boolean
-        fun userId(): String?
-        fun saveUserId(uid: String)
     }
 
 }

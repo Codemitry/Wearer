@@ -1,4 +1,4 @@
 package com.codemitry.wearer.mvp.usecases
 
-interface SignOutUseCase : () -> Unit {
+interface SignOutUseCase : () -> Unit, BaseUseCase {
 }

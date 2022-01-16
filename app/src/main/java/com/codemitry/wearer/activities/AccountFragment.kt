@@ -5,8 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.codemitry.wearer.ComponentsProvider
+import com.codemitry.wearer.R
 import com.codemitry.wearer.databinding.FragmentAccountBinding
+import com.codemitry.wearer.models.AuthType
+import com.codemitry.wearer.models.ImageResource
 import com.codemitry.wearer.mvp.contracts.account.AccountContract
 import javax.inject.Inject
 
@@ -58,5 +63,30 @@ class AccountFragment : Fragment(), AccountContract.View {
     override fun showSignInActivity() {
         SignInActivity.start(requireContext())
         requireActivity().finish()
+    }
+
+    override fun showUsername(username: String) {
+        binding.userName.text = username
+    }
+
+    override fun showUid(uid: String) {
+        binding.uid.text = uid
+    }
+
+    override fun showUserPhoto(image: ImageResource) {
+        Glide.with(requireContext())
+            .load(image.uri)
+            .error(image.localResId)
+            .transform(CircleCrop())
+            .into(binding.userPhoto)
+    }
+
+    override fun showAuthType(authType: AuthType) {
+        val authTypeAsResource = when (authType) {
+            AuthType.GOOGLE -> R.string.signedWithGoogle
+            AuthType.ANONYMOUS -> R.string.signedAnonymously
+            AuthType.UNKNOWN -> R.string.signedWayUnknown
+        }
+        binding.authType.text = getString(authTypeAsResource)
     }
 }
