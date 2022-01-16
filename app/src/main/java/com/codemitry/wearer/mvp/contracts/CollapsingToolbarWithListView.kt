@@ -26,10 +26,7 @@ interface CollapsingToolbarWithListView : BaseContract.BaseView {
     }
 
     fun updateToolbarBehaviour() {
-        list.addOnLayoutChangeListener { view, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
-            if (bottom != oldBottom) {
-                setToolbarScrollingEnabled(view.canScrollVertically(1) || view.canScrollVertically(-1))
-            }
-        }
+
+        setToolbarScrollingEnabled(list.canScrollVertically(1) || list.canScrollVertically(-1))
     }
 }

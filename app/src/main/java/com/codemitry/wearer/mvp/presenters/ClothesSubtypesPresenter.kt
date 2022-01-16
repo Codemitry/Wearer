@@ -23,6 +23,36 @@ class ClothesSubtypesPresenter @Inject constructor(
         view.updateToolbarBehaviour()
     }
 
+
+    private var isItemDeletingOperationRunning = false
+    set(value) {
+        field = value
+        if (!value) deletingClothes = null
+    }
+
+    private var deletingClothes: ClothesSubtype? = null
+
+    override fun onViewDetached() {
+        super.onViewDetached()
+
+        if (isItemDeletingOperationRunning) {
+
+            clothesTypesManager.deleteClothesSubtype(
+                clothesType,
+                deletingClothes!!,
+                object : ActionCompleteListener {
+                    override fun onSuccess() {
+                        isItemDeletingOperationRunning = false
+                        userClothesTypes.remove(deletingClothes)
+                    }
+
+                    override fun onFailure() {
+                        isItemDeletingOperationRunning = false
+                    }
+                })
+        }
+    }
+
     init {
         clothesTypesManager.loadClothesSubtypes(clothesType, object : ActionCompleteListener {
             override fun onClothesSubtypesLoaded(clothesSubtypes: List<ClothesSubtype>) {
@@ -65,9 +95,10 @@ class ClothesSubtypesPresenter @Inject constructor(
     }
 
     override fun onAskDeleteClothesItem(position: Int) {
-        val deletedItem = userClothesTypes[position]
+        deletingClothes = userClothesTypes[position]
         userClothesTypes.removeAt(position)
-        view?.askItemDeletingConfirmation(deletedItem, position)
+        isItemDeletingOperationRunning = true
+        view?.askItemDeletingConfirmation(deletingClothes!!, position)
     }
 
     override fun onItemDeletingPositiveAnswer(item: ClothesSubtype, position: Int) {
@@ -76,13 +107,19 @@ class ClothesSubtypesPresenter @Inject constructor(
                 item,
                 object : ActionCompleteListener {
                     override fun onSuccess() {
+                        isItemDeletingOperationRunning = false
                         userClothesTypes.remove(item)
                         view?.updateToolbarBehaviour()
+                    }
+
+                    override fun onFailure() {
+                        isItemDeletingOperationRunning = false
                     }
                 })
     }
 
     override fun onItemDeletingNegativeAnswer(item: ClothesSubtype, position: Int) {
+        isItemDeletingOperationRunning = false
         userClothesTypes.add(position, item)
         view?.addClothesType(item, position)
         view?.updateToolbarBehaviour()
